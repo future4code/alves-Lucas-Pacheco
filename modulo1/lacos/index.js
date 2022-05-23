@@ -54,23 +54,23 @@
 //Exercicios de Escrita de Código 
 
 //Ex1 
-let bichinhosUsuarios = Number(prompt("Quantos Bichos se tem? "))
-let  array = []
-if(bichinhosUsuarios === 0) {
-    console.log("Pode adotar um bicho seu vagabundo")
+// let bichinhosUsuarios = Number(prompt("Quantos Bichos se tem? "))
+// let  array = []
+// if(bichinhosUsuarios === 0) {
+//     console.log("Pode adotar um bicho seu vagabundo")
 
-} else {
+// } else {
 
-    for(let indice = 0; indice<bichinhosUsuarios; indice++) {
-        let bicho = prompt("Nome dos seus bichos?")
-        array[indice] = bicho
-    }
-    for(let arrayEx1 of array ) {
-        console.log(arrayEx1)
-    }
+//     for(let indice = 0; indice<bichinhosUsuarios; indice++) {
+//         let bicho = prompt("Nome dos seus bichos?")
+//         array[indice] = bicho
+//     }
+//     for(let arrayEx1 of array ) {
+//         console.log(arrayEx1)
+//     }
 
 
-}
+// }
 
 //Ex2
 
@@ -85,12 +85,13 @@ function ex2A(array) {
 }
 
 
-function ex2B(array) {
-}
-for (let ex2B of array) {
+function ex2B(batata) {
+
+for (let ex2B of batata) {
     console.log(ex2B / 10)
 }
 
+}
 function ex2C(array) {
     let novoArray = []
     for (let i = 0; i < array.length; i++) {

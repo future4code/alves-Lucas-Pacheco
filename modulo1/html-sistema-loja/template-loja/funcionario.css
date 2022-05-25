@@ -1,0 +1,28 @@
+.Entrada {
+    color: red;
+}
+
+.AnjinhoDaLoja {
+    color: yellow;
+}
+
+.carrasco {
+    color: darkred
+}
+
+
+body {
+    background-color: black;
+}
+
+.funcionarios {
+    color: red;
+}
+
+.FuncionariosAlive {
+    color: yellow;
+}
+
+.funcionariosDead {
+    color: red
+}

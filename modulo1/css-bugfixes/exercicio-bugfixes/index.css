@@ -44,6 +44,10 @@ div img {
     border-radius: 5px;
     font-size: 20px;
     color: white;
+    position: relative;
+    bottom: -20%;
+    left: -20%
+
 }
 
 .botao-amarelo:hover {
@@ -84,6 +88,8 @@ div img {
     padding: 100px 0;
     font-size: 60px;
 }
+
+
 
 
 /**

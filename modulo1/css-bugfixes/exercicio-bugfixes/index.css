@@ -35,7 +35,10 @@ div>p:first-child {
 }
 
 div img {
-    background: black;
+    max-width: 50px;
+    max-height: 50px;
+    width: auto;
+    height: auto;
 }
 
 .botao-amarelo {
@@ -133,7 +136,7 @@ td button {
     font-size: 10px;
     color: black;
     position: relative;
-    bottom: -150px;
+    bottom: -100px;
     right: -600px;
 }
 

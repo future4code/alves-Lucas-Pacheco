@@ -89,7 +89,12 @@ div img {
 }
 
 #container-de-descricao>ol {
-    padding: 15px 0px;
+    
+    padding: 15px 1px;
+}
+
+li {
+    margin: auto 42%;
 }
 
 #container-para-comprar {

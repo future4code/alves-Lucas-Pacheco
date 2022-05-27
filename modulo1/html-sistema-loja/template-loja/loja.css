@@ -1,0 +1,31 @@
+.apresentacaoLoja {
+    background-color: purple;
+    color: red;
+    width: 70%;
+    margin: 10px;
+
+}
+
+.guiaLoja {
+    background-color: black;
+    color: white;
+    width: 70%;
+    margin: 10px;
+}
+
+body {
+    background-color: darkgray;
+}
+
+.AnjinhoDaLoja{
+    color: yellow;
+}
+
+#ritualDoMal {
+    color: darkred;
+}
+
+td {
+    background: darkred;
+    color: white;
+}

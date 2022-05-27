@@ -1,0 +1,21 @@
+body {
+    background: darkorange;
+
+}
+.AnjinhoDaLoja {
+    color: yellow;
+    margin: 10px;
+
+}
+
+.Goblins {
+    background-color: red;
+    color: black;
+    margin: 10px ;
+    
+}
+
+
+td {
+    color: darkblue;
+}

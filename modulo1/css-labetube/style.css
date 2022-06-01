@@ -5,7 +5,7 @@
 
 body {
     min-height: 100vh;
-    
+
 
 }
 
@@ -50,7 +50,7 @@ img {
 .ImagensFuncionais {
     display: grid;
      width: 100%;
-     
+
 
 
 }
@@ -63,8 +63,8 @@ img {
 .ImagensNãoFuncionais {
     display: grid;
     width: 100%;
-    
-    
+
+
 }
 
 .ImagensNãoFuncionais p {
@@ -80,5 +80,77 @@ footer {
     justify-items: center;
     border: 1px solid orange;
     background-color: orange;
+}
+
+@media screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    header {
+        position: fixed;
+        top: 0;
+        display: flex;
+        width: 100%;
+        border: 1px orange solid;
+        background-color: orange;
+    }
+
+
+    header input {
+        display: flex;
+        justify-content: end;
+    }
+
+
+    section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    section div {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        border: 1px orange solid;
+
+
+
+    }
+
+    img {
+        height: 15rem;
+        width: 15rem;
+    }
+
+    .ImagensNãoFuncionais {
+        width: 100%;
+    }
+
+    .ImagensNãoFuncionais p {
+        align-items: center;
+    }
+
+    .ImagensFuncionais {
+        width: 100%;
+    }
+
+    .ImagensFuncionais p {
+        align-items: center;
+    }
+
+    footer {
+        margin-top: 2rem;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px orange;
+        background-color: orange;
+
+    }
+
+
 }
 

@@ -43,12 +43,17 @@ section div {
 }
 
 img {
+    display: grid;
+    justify-items: center;
+    align-items: center;
     height: 18rem;
     width: 18rem;
+
 }
 
 .ImagensFuncionais {
     display: grid;
+    justify-items: center;
      width: 100%;
 
 
@@ -62,6 +67,7 @@ img {
 
 .ImagensNãoFuncionais {
     display: grid;
+    justify-items: center;
     width: 100%;
 
 

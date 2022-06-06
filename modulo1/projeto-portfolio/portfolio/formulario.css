@@ -1,0 +1,74 @@
+nav>img {
+    max-width: 60px;
+    max-height: 60px;
+    width: auto;
+    height: auto;
+    
+}
+
+nav>a {
+    color: orange;
+    border: 1px solid darkcyan;
+
+
+}
+
+nav>a:hover {
+    color: yellow;
+    background-color: cornflowerblue;
+    
+}
+
+nav>a:active {
+    color: blue;
+    background-color: yellow;
+
+    
+}
+
+body {
+    background-color: whitesmoke;
+}
+
+h1, h2 {
+    color: purple;
+}
+
+button {
+    color: purple;
+}
+
+button:hover {
+    background-color: blue;
+    color: yellow;
+}
+
+button:active {
+    background-color: yellow;
+    color: blue;
+    
+}
+
+footer img {
+    max-width: 40px;
+    max-height: 40px;
+    
+    position: relative;
+    right: -45%;
+
+}
+
+footer img:hover {
+    opacity: 0.6;
+}
+
+footer img:active {
+    opacity: 1;
+}
+
+footer {
+    position: relative;
+
+
+
+}

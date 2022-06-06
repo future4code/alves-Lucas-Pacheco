@@ -1,0 +1,162 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+
+
+}
+
+header {
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    justify-items: start;
+    border: 1px orange solid;
+    background-color: orange;
+}
+
+header input {
+    justify-self: end;
+}
+
+main {
+ margin-left: 5rem;
+ margin-right: 5rem;
+}
+
+section {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    column-gap: 1rem;
+}
+
+section div {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    width: 10px;
+    border: 1px solid orange;
+}
+
+img {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    height: 18rem;
+    width: 18rem;
+
+}
+
+.ImagensFuncionais {
+    display: grid;
+    justify-items: center;
+     width: 100%;
+
+
+
+}
+
+.ImagensFuncionais p {
+    display: grid;
+    justify-self: center;
+}
+
+.ImagensNãoFuncionais {
+    display: grid;
+    justify-items: center;
+    width: 100%;
+
+
+}
+
+.ImagensNãoFuncionais p {
+    display: grid;
+    justify-self: center;
+
+}
+
+footer {
+    margin-top: 2rem;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    border: 1px solid orange;
+    background-color: orange;
+}
+
+@media screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    header {
+        position: fixed;
+        top: 0;
+        display: flex;
+        width: 100%;
+        border: 1px orange solid;
+        background-color: orange;
+    }
+
+
+    header input {
+        display: flex;
+        justify-content: end;
+    }
+
+
+    section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    section div {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        border: 1px orange solid;
+
+
+
+    }
+
+    img {
+        height: 15rem;
+        width: 15rem;
+    }
+
+    .ImagensNãoFuncionais {
+        width: 100%;
+    }
+
+    .ImagensNãoFuncionais p {
+        align-items: center;
+    }
+
+    .ImagensFuncionais {
+        width: 100%;
+    }
+
+    .ImagensFuncionais p {
+        align-items: center;
+    }
+
+    footer {
+        margin-top: 2rem;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px orange;
+        background-color: orange;
+
+    }
+
+
+}
+

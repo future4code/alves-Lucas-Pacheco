@@ -54,17 +54,28 @@ nav li {
     justify-content: space-between;
 }
 
+
+
 .imagemBolo {
     width: 100%;
     
 }
 
-section {
+.BolosTotais {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px
+}
+
+/* section {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-}
+} */
 .bolo{
+    display: flex;
+    flex-wrap: wrap;
     width: 200px;
     height: fit-content;
     margin: 5px;

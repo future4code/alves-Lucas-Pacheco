@@ -7,7 +7,8 @@ import seta from "./img/seta.png"
 import CardPequeno from "./components/CardMenor/CardMenor"
 import email from "./img/email.png"
 import locali from "./img/localizacao.png"
-
+import rpg from "./img/rpg.jpg"
+import nasa from "./img/Nasa.png"
 
 function App() {
   return (
@@ -26,12 +27,15 @@ function App() {
         />
         
       <CardPequeno
+         
          imagem= {email}
-         descricao= "HASHASHASHAHS!@GMAIL.COM!"
+         nome= "Email"
+         descricao= "Olá1243@gmail.com"
          />
        <CardPequeno
          imagem=  {locali}
-         descricao = "Rua de São Nunca ahahaha"
+         nome= "Localização"
+         descricao = "Narciso Sturlini, 454334"
        
          />  
       </div>
@@ -39,15 +43,15 @@ function App() {
       <div className="page-section-container">
         <h2>Experiências profissionais</h2>
         <CardGrande 
-          imagem="https://s3.amazonaws.com/future4.com.br/static/headf4-c492117ca2373dc85ca81bf715b3dc2a.png" 
-          nome="Labenu" 
-          descricao="Formando desenvolvedores para o mercado de trabalho!" 
+          imagem= {rpg}
+          nome="RPG de Mesa" 
+          descricao="Jogando RPG e matando personagens das outras pessoas com intuito de trazer a infelicidade ao mundo" 
         />
         
         <CardGrande 
-          imagem="https://imagens.canaltech.com.br/empresas/4418.400.jpg" 
+          imagem={nasa} 
           nome="NASA" 
-          descricao="Apontando defeitos." 
+          descricao="Meu maior defeito é minha ansiedade maluca que não me deixa concentrar muitas vezes!"
 
         />
         

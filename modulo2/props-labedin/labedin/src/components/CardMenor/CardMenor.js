@@ -1,14 +1,15 @@
 import React from "react";
-import "./CardMenor.css"
+import {Estilo, ImagemMenor, divSegunda} from "./styled"
 
 function CardMenor(props) {
     return (
-        <div className="cardPequeno">
-            <img src={ props.imagem } />
+        <Estilo>
+            < ImagemMenor src={ props.imagem } />
             <div>
+                <h4>{props.nome}</h4>
                 <p>{ props.descricao }</p>
             </div>
-        </div>
+        </Estilo>
     )
 }
 

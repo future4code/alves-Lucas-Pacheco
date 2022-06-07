@@ -1,15 +1,15 @@
 import React from 'react';
-import './CardGrande.css'
+import {EstiloCard, Carta, Titulo, DivFinal } from "./styled"
 
 function CardGrande(props) {
     return (
-        <div className="bigcard-container">
-            <img src={ props.imagem } />
-            <div>
-                <h4>{ props.nome }</h4>
+        <EstiloCard >
+            < Carta src={ props.imagem } />
+            <DivFinal>
+                <Titulo>{ props.nome }</Titulo>
                 <p>{ props.descricao }</p>
-            </div>
-        </div>
+            </DivFinal>
+        </EstiloCard>
     )
 }
 

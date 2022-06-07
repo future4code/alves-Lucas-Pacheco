@@ -1,12 +1,12 @@
 import React from 'react';
-import "./ImagemButton.css"
+import {RedeSocial, ImagemSocial} from "./styled"
 
 function ImagemButton(props) {
     return (
-        <div className="image-button-container">
-            <img src={ props.imagem }/>
+        <RedeSocial>
+            <ImagemSocial src={ props.imagem }/>
             <p>{ props.texto }</p>
-        </div>
+        </RedeSocial>
 
     )
 }

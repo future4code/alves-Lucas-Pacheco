@@ -4,6 +4,10 @@ import CardGrande from './components/CardGrande/CardGrande';
 import ImagemButton from './components/ImagemButton/ImagemButton';
 import MinhaFoto from "./img/Lucas.jpg"
 import seta from "./img/seta.png"
+import CardPequeno from "./components/CardMenor/CardMenor"
+import email from "./img/email.png"
+import locali from "./img/localizacao.png"
+
 
 function App() {
   return (
@@ -20,6 +24,16 @@ function App() {
           imagem={seta} 
           texto="Ver mais"
         />
+        
+      <CardPequeno
+         imagem= {email}
+         descricao= "HASHASHASHAHS!@GMAIL.COM!"
+         />
+       <CardPequeno
+         imagem=  {locali}
+         descricao = "Rua de São Nunca ahahaha"
+       
+         />  
       </div>
 
       <div className="page-section-container">
@@ -34,8 +48,11 @@ function App() {
           imagem="https://imagens.canaltech.com.br/empresas/4418.400.jpg" 
           nome="NASA" 
           descricao="Apontando defeitos." 
+
         />
+        
       </div>
+
 
       <div className="page-section-container">
         <h2>Minhas redes sociais</h2>

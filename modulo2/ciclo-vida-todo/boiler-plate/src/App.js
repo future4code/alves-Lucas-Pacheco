@@ -50,7 +50,11 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    const tarefa = localStorage.getItem()
+    const tarefa = localStorage.getItem("tarefas")
+    const tarefaConvertida = JSON.parse(tarefa)
+    this.setState({
+      tarefas: tarefaConvertida
+    })
 
   };
 

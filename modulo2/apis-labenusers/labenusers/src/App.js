@@ -4,6 +4,7 @@ import axios from "axios";
 import React, { Component } from 'react'
 import PaginaInicial from './Components/PaginaInicial';
 import SegundaPagina from './Components/SegundaPagina';
+import TerceiraPagina from './Components/TerceiraPagina';
 export default class App extends Component {
   state = {
     listaDeNomes: [],
@@ -65,30 +66,76 @@ export default class App extends Component {
    })
   }
 
+  onClickApagarUsuario =  async(id) => {
+     
+    try {
+      const deletar = await axios. 
+      delete (
+        `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${id}`, {
+          
+         headers: {
+            Authorization: "lucas-magalhaes-alves"
+  
+          }
+
+        })
+        console.log(deletar)
+     alert("Você tem certeza que quer apagar?")
+    }
+    catch (error) {
+      alert(error.response.data)
+
+    }
+    
+
+  }
+
  componentDidMount() {
   this.listaDeUsuarios()
  }
- 
- mudandoTela = (mudaTela) => {
-  this.setState({tela: mudaTela})
+
+ componentDidUpdate() {
+  this.listaDeUsuarios()
  }
 
+
+ irParaTelaCadastro = () => {
+  this.setState({tela: "cadastro"})
+ }
+
+ irParaLista = () => {
+  this.setState({tela: "lista"})
+ }
+
+ irParaDetalhes = () => {
+  this.setState({tela: "detalhes"})
+ }
+ 
+
  exibindoNaTela = () => {
-  if(this.state.tela === "cadastro") {
-    return <PaginaInicial mudandoTela={this.mudandoTela}
-    nomeUsuario={this.state.nomeUsuario}
-    emailUsuario={this.state.emailUsuario}
-    onChangeNomeUsuario={this.onChangeNomeUsuario}
-    onChangeUsuarioEmail={this.onChangeUsuarioEmail}
-    onClickCriarUsuario={this.onClickCriarUsuario} />
-  } else {
-    return <SegundaPagina mudandoTela={this.mudandoTela}
+  switch (this.state.tela) {
+    case "cadastro":
+      return <PaginaInicial mudandoTela={this.irParaLista}
+      nomeUsuario={this.state.nomeUsuario}
+      emailUsuario={this.state.emailUsuario}
+      onChangeNomeUsuario={this.onChangeNomeUsuario}
+      onChangeUsuarioEmail={this.onChangeUsuarioEmail}
+      onClickCriarUsuario={this.onClickCriarUsuario} />
+    case "lista":  
+      return <SegundaPagina mudandoTela={this.irParaTelaCadastro}
     listaDeUsuarios={this.listaDeUsuarios}
-    listaDeNomes={this.state.listaDeNomes} />
+    onClickApagarUsuario={this.onClickApagarUsuario}
+    listaDeNomes={this.state.listaDeNomes} 
+    irParaDetalhes={this.irParaDetalhes}/>
+  
+    case "detalhes":
+      return <TerceiraPagina mudandoTela={this.irParaLista} />
+    
 
 
   }
- }
+   
+}
 
     render() {
    

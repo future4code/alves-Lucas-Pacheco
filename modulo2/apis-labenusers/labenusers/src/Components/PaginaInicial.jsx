@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import SegundaPagina from './SegundaPagina.jsx'
+
 
 
 export default class PaginaInicial extends Component {

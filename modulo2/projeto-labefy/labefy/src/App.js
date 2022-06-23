@@ -60,7 +60,29 @@ export default class App extends Component {
     })
   }
 
+  onClickApagarPlaylist = (id) => {
+    axios
+    .delete (
+      `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${id}`, {
+        headers: {
+          Authorization: "lucas-magalhaes-alves"
+        }
+      }
+    )
+    .then((deletar) => {
+      console.log(deletar)
+      alert(`Você tem certeza que quer apagar sua Playlist`)
+    })
+    .catch((error) => {
+      alert(error.response.data)
+    })
+  }
+
   componentDidMount() {
+    this.todasPlaylists()
+  }
+
+  componentDidUpdate() {
     this.todasPlaylists()
   }
 
@@ -71,6 +93,7 @@ export default class App extends Component {
    const  listaDePlaylistsAtualizada = this.state.playlistDeMusicas.map((playlist) => {
     return <div key={playlist.id}>
       <li>{playlist.name}</li>
+      <button onClick={() => this.onClickApagarPlaylist(playlist.id)}>Apagar Playlist</button>
 
     </div>
    })

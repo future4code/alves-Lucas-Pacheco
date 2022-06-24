@@ -101,10 +101,7 @@ export default class detalhesMusicas extends Component {
 
 
 
-    
- 
-  
-    render() {
+      render() {
        const  listaDeMusicasAtualizada = this.state.listaDeMusicas.map((musica) => {
         return <div key={musica.id}>
             <li>{musica.name}</li>

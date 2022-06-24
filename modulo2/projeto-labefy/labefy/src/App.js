@@ -22,7 +22,7 @@ export default class App extends Component {
   }
 
   irParaPlaylist = () => {
-    this.setState({ telaAtual: "playlist" })
+    this.setState({ telaAtual: "playlist", playlistEscolhida:"" })
   }
 
   irParaDetalhes = (id) => {

@@ -2,113 +2,47 @@ import './App.css';
 // import styled from 'styled-components';
 import axios from 'axios';
 import React, { Component } from 'react'
-
+import PaginaInicial from './Paginas/PaginaInicial';
+import Playlist from './Paginas/Playlist';
+import DetalhesMusicas from './Paginas/detalhesMusicas';
 
 
 export default class App extends Component {
   state = {
-    playlistDeMusicas: [],
-    valorInputPlaylist: "",
     telaAtual: "inicial",
-    erro: ""
+   
   }
-
-  OnClickCriarPlaylist = () => {
-    const novaPlaylist  = {
-      name: this.state.valorInputPlaylist
-    }
-    axios
-    .post(
-      "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists", novaPlaylist , {
-        headers: {
-          Authorization: "lucas-magalhaes-alves"
-
-        }
-      }
-    )
-    .then((respostaDaPlaylist) => {
-      console.log(respostaDaPlaylist)
-      this.todasPlaylists()
-      alert(`Sua Playlist foi enviada, já está a disposição`)
-    })
-    .catch((erro) => {
-      console.log(erro.data)
-      alert(erro.data.message)
-    })
-
-  }
-
-  onChangeValorInputPlaylist = (event) => {
-    this.setState({ valorInputPlaylist: event.target.value })
-  }
-
-  todasPlaylists = () => {
-    axios
-    .get (
-      "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists", {
-        headers: {
-          Authorization: "lucas-magalhaes-alves"
-        }
-      }
-    )
-    .then((listaDePlaylists) => {
-      console.log(listaDePlaylists.data.result.list)
-      this.setState({playlistDeMusicas: listaDePlaylists.data.result.list})
-    })
-    .catch((error) => {
-      this.setState({erro: error.response.data})
-    })
-  }
-
-  onClickApagarPlaylist = (id) => {
-    axios
-    .delete (
-      `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${id}`, {
-        headers: {
-          Authorization: "lucas-magalhaes-alves"
-        }
-      }
-    )
-    .then((deletar) => {
-      console.log(deletar)
-      alert(`Você tem certeza que quer apagar sua Playlist`)
-    })
-    .catch((error) => {
-      alert(error.response.data)
-    })
-  }
-
-  componentDidMount() {
-    this.todasPlaylists()
-  }
-
-  componentDidUpdate() {
-    this.todasPlaylists()
-  }
-
  
+
+  irParaTelaAdicionar = () => {
+    this.setState({ telaAtual: "inicial" })
+  }
+
+  irParaPlaylist = () => {
+    this.setState({ telaAtual: "playlist" })
+  }
+
+  irParaDetalhes = () => {
+    this.setState({ telaAtual: "detalhes" })
+  }
+
+   exibirNaTela = () => {
+    switch(this.state.telaAtual) {
+      case "inicial":
+        return  < PaginaInicial irParaPlaylist={this.irParaPlaylist}/>
+      case "playlist":
+        return < Playlist irParaDetalhes={this.irParaDetalhes} irParaTelaAdicionar={this.irParaTelaAdicionar} />
+      case "detalhes": 
+        return < DetalhesMusicas irParaPlaylist={this.irParaPlaylist} />   
+
+    }
+   }
 
 
   render() {
-   const  listaDePlaylistsAtualizada = this.state.playlistDeMusicas.map((playlist) => {
-    return <div key={playlist.id}>
-      <li>{playlist.name}</li>
-      <button onClick={() => this.onClickApagarPlaylist(playlist.id)}>Apagar Playlist</button>
-
-    </div>
-   })
     return (
       <div>
-        <label for="ImplementarPlaylist">Playlist</label>
-        <input 
-        value={this.state.valorInputPlaylist}
-        placeholder="Insira sua Playlist"
-        id="ImplementarPlaylist"
-        onChange={this.onChangeValorInputPlaylist}/>
-      <button onClick={this.OnClickCriarPlaylist}>Enviar sua Playlist</button>
-      <hr />
-      <h1>LISTA DE PAMONHA</h1>
-      {listaDePlaylistsAtualizada}
+      {this.exibirNaTela()}
       </div>
     )
   }

@@ -16,49 +16,6 @@ export default class App extends Component {
    
   }
 
-  todasPlaylists = () => {
-    axios
-        .get(
-            "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists", {
-            headers: {
-                Authorization: "lucas-magalhaes-alves"
-            }
-        }
-        )
-        .then((listaDePlaylists) => {
-            this.setState({ playlistDeMusicas: listaDePlaylists.data.result.list })
-        })
-        .catch((error) => {
-            this.setState({ erro: error.response.data })
-        })
-}
- 
-componentDidMount() {
-  this.todasPlaylists()
-}
-
-
-
-
-
-onClickMostraDetalhes = (id) => {
-  axios
-    .get(
-      `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${id}/tracks`, {
-      headers: {
-        Authorization: "lucas-magalhaes-alves"
-      }
-    }
-    )
-    .then((verDetalhes) => {
-      console.log(verDetalhes.data.result.quantity.tracks)
-      this.setState({listaDeMusicas: verDetalhes.data.result.quantity})
-      // this.setState({idDaPlaylist: id })
-    })
-    .catch((erro) => {
-      alert((erro.response.data.mensage))
-    })
-}
 
   irParaTelaAdicionar = () => {
     this.setState({ telaAtual: "inicial", playlistEscolhida:"" })

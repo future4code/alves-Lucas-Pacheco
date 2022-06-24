@@ -14,9 +14,9 @@ export default class detalhesMusicas extends Component {
         this.onClickMostraPorcariaDaMusicas()
     }
 
-    // componentDidUpdate() {
-    //     this.onClickMostraPorcariaDaMusicas()
-    // }
+    componentDidUpdate() {
+        this.onClickMostraPorcariaDaMusicas()
+    }
 
     onClickMostraPorcariaDaMusicas = (id) => {
         axios
@@ -79,6 +79,26 @@ export default class detalhesMusicas extends Component {
         this.setState({ valorInputAdicionarUrl: event.target.value })
     }
 
+    onClickApagarMusica = (id) => {
+        if (window.confirm(`Você Tem certeza que quer apagar essa música?`)) {
+         axios
+        .delete(
+            `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${this.props.id}/tracks/${id}`, {
+                headers: {
+                    Authorization: "lucas-magalhaes-alves"
+                }
+            }
+        )
+        .then((deletar) => {
+            alert(`Está sendo apagado última chance de não fazer.`)
+        })
+        .catch((erro) => {
+            alert(erro.response.data.mensage)
+        }) 
+        }
+        
+    }
+
 
 
     
@@ -91,6 +111,7 @@ export default class detalhesMusicas extends Component {
             <li>{musica.artist}</li>
              <li>{musica.url}</li>
             <audio ref="audio_tag" src={musica.url} controls />
+            <button onClick={() => this.onClickApagarMusica(musica.id)}>Apagar Musica</button>
 
         </div>
 

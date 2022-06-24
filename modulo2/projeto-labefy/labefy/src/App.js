@@ -10,20 +10,66 @@ import DetalhesMusicas from './Paginas/detalhesMusicas';
 export default class App extends Component {
   state = {
     telaAtual: "inicial",
+    //playlistDeMusicas: [],
+    // idDaPlaylist: [],
+    playlistEscolhida: ""
    
   }
+
+  todasPlaylists = () => {
+    axios
+        .get(
+            "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists", {
+            headers: {
+                Authorization: "lucas-magalhaes-alves"
+            }
+        }
+        )
+        .then((listaDePlaylists) => {
+            this.setState({ playlistDeMusicas: listaDePlaylists.data.result.list })
+        })
+        .catch((error) => {
+            this.setState({ erro: error.response.data })
+        })
+}
  
+componentDidMount() {
+  this.todasPlaylists()
+}
+
+
+
+
+
+onClickMostraDetalhes = (id) => {
+  axios
+    .get(
+      `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${id}/tracks`, {
+      headers: {
+        Authorization: "lucas-magalhaes-alves"
+      }
+    }
+    )
+    .then((verDetalhes) => {
+      console.log(verDetalhes.data.result.quantity.tracks)
+      this.setState({listaDeMusicas: verDetalhes.data.result.quantity})
+      // this.setState({idDaPlaylist: id })
+    })
+    .catch((erro) => {
+      alert((erro.response.data.mensage))
+    })
+}
 
   irParaTelaAdicionar = () => {
-    this.setState({ telaAtual: "inicial" })
+    this.setState({ telaAtual: "inicial", playlistEscolhida:"" })
   }
 
   irParaPlaylist = () => {
     this.setState({ telaAtual: "playlist" })
   }
 
-  irParaDetalhes = () => {
-    this.setState({ telaAtual: "detalhes" })
+  irParaDetalhes = (id) => {
+    this.setState({ telaAtual: "detalhes" , playlistEscolhida: id})
   }
 
    exibirNaTela = () => {
@@ -31,11 +77,25 @@ export default class App extends Component {
       case "inicial":
         return  < PaginaInicial irParaPlaylist={this.irParaPlaylist}/>
       case "playlist":
-        return < Playlist irParaDetalhes={this.irParaDetalhes} irParaTelaAdicionar={this.irParaTelaAdicionar} />
+        return < Playlist  
+              idDaPlaylist={this.state.idDaPlaylist}
+              onClickTelaDetalhes={this.onClickTelaDetalhes}
+              todasPlaylists={this.todasPlaylists} 
+              playlistDeMusicas={this.state.playlistDeMusicas} 
+              irParaDetalhes={this.irParaDetalhes} id={this.state.playlistEscolhida}/>
       case "detalhes": 
-        return < DetalhesMusicas irParaPlaylist={this.irParaPlaylist} />   
+        return < DetalhesMusicas 
+              irParaDetalhes={this.irParaDetalhes} id={this.state.playlistEscolhida}
+              irParaPlaylist={this.irParaPlaylist}/>
+
+         
 
     }
+   }
+
+   onClickTelaDetalhes = (id) => {
+    this.irParaDetalhes()
+    this.onClickMostraDetalhes(id)
    }
 
 

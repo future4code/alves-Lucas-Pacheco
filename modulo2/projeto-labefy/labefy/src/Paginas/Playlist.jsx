@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import {GiYinYang, GiDaemonPull, GiDelighted} from  "react-icons/gi"
+import { ContainerPrincipal, ContainerInputs, ContainerInputsButton, ViewPlaylist, ContainerPlaylist } from './estilizacao/syledPlaylist'
 
+ 
+
+ 
 export default class Playlist extends Component {
 
     state = {
@@ -89,30 +94,43 @@ export default class Playlist extends Component {
 
     render() {
         const listaDePlaylistsAtualizada = this.state.playlistDeMusicas.map((playlist) => {
-            return <div key={playlist.id}>
+            return <ContainerInputs key={playlist.id}>
                 <li>{playlist.name}</li>
-                <button onClick={() => this.onClickApagarPlaylist(playlist.id)}>Apagar Playlist</button>
-                <button onClick={() => this.props.irParaDetalhes(playlist.id)}>Ver suas Músicas</button>
-            </div>
+                <ContainerInputsButton>
+                <button onClick={() => this.onClickApagarPlaylist(playlist.id)}>Apagar Playlist <GiYinYang /></button>
+                <button onClick={() => this.props.irParaDetalhes(playlist.id)}>Ver suas Músicas <GiDaemonPull /></button>
+                </ContainerInputsButton>
+            </ContainerInputs>
         })
 
         return (
-            <div>
-                <h1> VEJA SUAS PLAYLISTS</h1>
-                {listaDePlaylistsAtualizada}
+            <ContainerPrincipal>
+                <ViewPlaylist>
+                <h1> Seja Bem Vindo a Pagina De Playlist da Labefy</h1>
+                <p> Nos da Labefy temos como intuito da cada um de vocês, uma oportunidade única de ouvir músicas de forma otimizada e renovadora</p>
                 <hr />
-                <h1> ADICIONAR PLAYLIST </h1>
+                </ViewPlaylist>
                 <hr />
+                <ContainerPlaylist>
+                <h2> Adicionar uma Playlist  </h2>
                 <label for="ImplementarPlaylist">Playlist</label>
                 <input
                     value={this.state.valorInputPlaylist}
                     placeholder="Insira sua Playlist"
                     id="ImplementarPlaylist"
                     onChange={this.onChangeValorInputPlaylist} />
-                <button onClick={this.OnClickCriarPlaylist}>Enviar sua Playlist</button>
+               
+                <ContainerInputsButton>
+                <button onClick={this.OnClickCriarPlaylist}>Enviar sua Playlist < GiDelighted /></button>
+                </ContainerInputsButton>
+                </ContainerPlaylist> 
                 <hr />
-                <button onClick={() => this.props.irParaPlaylist()}> Veja suas Playlists</button>
-            </div>
+                <ViewPlaylist>
+                <h1> VEJA SUAS PLAYLISTS</h1>
+                {listaDePlaylistsAtualizada}
+                <hr />
+                </ViewPlaylist>
+            </ContainerPrincipal>
         )
     }
 }

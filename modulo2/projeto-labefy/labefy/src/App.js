@@ -1,6 +1,6 @@
 import './App.css';
 // import styled from 'styled-components';
-import axios from 'axios';
+
 import React, { Component } from 'react'
 import PaginaInicial from './Paginas/PaginaInicial';
 import Playlist from './Paginas/Playlist';

@@ -140,7 +140,7 @@ export default class detalhesMusicas extends Component {
               <hr />
               <InformationAdd>
               <h3> Informações Adicionais</h3>
-              <a href="http://spoti4.future4.com.br/5.mp3">Musicas 1 a 100</a>
+              <a href="http://spoti4.future4.com.br/5.mp3"  target="_blank">Musicas 1 a 100</a>
               <p> Neste Link em questão temos algumas músicas que vocês podem colocar, modifiquem o número 5 para entre 1 a 99 e poderá adicionar músicas diferentes, nosso site está no beta no futuro terão mais músicas a adicionar </p>
               </InformationAdd> 
                 <hr />

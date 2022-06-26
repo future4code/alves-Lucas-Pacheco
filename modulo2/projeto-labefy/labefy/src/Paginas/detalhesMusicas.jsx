@@ -1,6 +1,5 @@
 import axios from 'axios'
 import React, { Component } from 'react'
-import styled from 'styled-components'
 import {GiDaggerRose, GiEvilFork, GiExtraTime, GiFluffyTrefoil} from "react-icons/gi"
 import { ContainerPrincipal, ContainerSongs, ContainerInicial, ContainerAdicionarMusica, InformationAdd, DivLarge  } from './estilizacao/styledAddM'
 
@@ -11,7 +10,6 @@ export default class detalhesMusicas extends Component {
         valorInputAdicionarMusica: "",
         valorInputAdicionarArtista: "",
         valorInputAdicionarUrl: "",
-   
     }
 
     componentDidMount() {
@@ -34,7 +32,7 @@ export default class detalhesMusicas extends Component {
           .then((verDetalhes) => {
 
             this.setState({listaDeMusicas: verDetalhes.data.result.tracks})
-            // this.setState({idDaPlaylist: id })
+
           })
           .catch((erro) => {
             alert((erro.response.data.mensage))

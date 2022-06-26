@@ -10,15 +10,13 @@ import DetalhesMusicas from './Paginas/detalhesMusicas';
 export default class App extends Component {
   state = {
     telaAtual: "inicial",
-    //playlistDeMusicas: [],
-    // idDaPlaylist: [],
     playlistEscolhida: ""
    
   }
 
 
   irParaTelaAdicionar = () => {
-    this.setState({ telaAtual: "inicial", playlistEscolhida:"" })
+    this.setState({ telaAtual: "inicial" })
   }
 
   irParaPlaylist = () => {
@@ -35,10 +33,6 @@ export default class App extends Component {
         return  < PaginaInicial irParaPlaylist={this.irParaPlaylist}/>
       case "playlist":
         return < Playlist  
-              idDaPlaylist={this.state.idDaPlaylist}
-              onClickTelaDetalhes={this.onClickTelaDetalhes}
-              todasPlaylists={this.todasPlaylists} 
-              playlistDeMusicas={this.state.playlistDeMusicas} 
               irParaDetalhes={this.irParaDetalhes} id={this.state.playlistEscolhida}/>
       case "detalhes": 
         return < DetalhesMusicas 
@@ -50,11 +44,7 @@ export default class App extends Component {
     }
    }
 
-   onClickTelaDetalhes = (id) => {
-    this.irParaDetalhes()
-    this.onClickMostraDetalhes(id)
-   }
-
+ 
 
   render() {
     return (

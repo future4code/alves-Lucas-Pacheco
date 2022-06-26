@@ -1,5 +1,9 @@
 import styled from 'styled-components'
 
+export const DivFather = styled.div `
+background-color: lightcyan;
+height: 100%;
+width: 100%;`
 
  export const ContainerPrincipal = styled.div `
  display: flex;
@@ -14,6 +18,7 @@ import styled from 'styled-components'
  border: 1px solid orange;
  margin-top: 3%;
  margin-bottom: 3%;
+ background-color: lightcyan;
  li {
     margin-top: 2%;
     margin-bottom: 5%;

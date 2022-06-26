@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import {GiYinYang, GiDaemonPull, GiDelighted} from  "react-icons/gi"
-import { ContainerPrincipal, ContainerInputs, ContainerInputsButton, ViewPlaylist, ContainerPlaylist } from './estilizacao/syledPlaylist'
+import { ContainerPrincipal, ContainerInputs, ContainerInputsButton, ViewPlaylist, ContainerPlaylist, DivFather } from './estilizacao/syledPlaylist'
 
  
 
@@ -104,6 +104,7 @@ export default class Playlist extends Component {
         })
 
         return (
+            <DivFather> 
             <ContainerPrincipal>
                 <ViewPlaylist>
                 <h1> Seja Bem Vindo a Pagina De Playlist da Labefy</h1>
@@ -125,12 +126,13 @@ export default class Playlist extends Component {
                 </ContainerInputsButton>
                 </ContainerPlaylist> 
                 <hr />
+                </ContainerPrincipal>
                 <ViewPlaylist>
                 <h1> VEJA SUAS PLAYLISTS</h1>
                 {listaDePlaylistsAtualizada}
                 <hr />
                 </ViewPlaylist>
-            </ContainerPrincipal>
+                </DivFather>
         )
     }
 }

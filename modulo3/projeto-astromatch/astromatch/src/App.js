@@ -1,9 +1,9 @@
 
 import './App.css';
-import React, {useState, useEffect} from 'react'
-import axios from 'axios';
-import Inicialpage from './pages/Inicialpage';
-import Matchpage from './pages/Matchpage';
+import React, {useState} from 'react'
+import Home from "./pages/Home"
+import Matchpage from "./pages/Matchpage"
+
 function App() {
  const [currentScreen, setCurrentScreen] = useState("home")
  
@@ -15,9 +15,11 @@ const goToMatchScreen = () => { setCurrentScreen("MatchPage")}
 const selectScreen = () => {
   switch (currentScreen) {
     case "home":
-      return <Inicialpage goToMatchScreen={goToMatchScreen} />
+      return <Home goToMatchScreen={goToMatchScreen} />
     case "MatchPage":
       return <Matchpage goToHome={goToHome} />
+    default:
+      return "Vacilou"
   }
 
  }

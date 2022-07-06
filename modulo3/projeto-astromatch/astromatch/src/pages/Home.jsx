@@ -27,12 +27,16 @@ const ChoosePeople = (id) => {
         if (res.data.isMatch) {
             alert(`Deu Match ${users.name}`)
         }
+        getUsers()
      })
     .catch((err) => {
         console.log(err)
     })
 }
 
+const Match = () => {
+
+}
 
 
 useEffect(() => {

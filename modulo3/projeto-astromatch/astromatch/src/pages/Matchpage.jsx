@@ -56,7 +56,7 @@ alert('Busque Novos Amores')
         {displayMatch}
         </div>
       <hr /> 
-      <button onClick={onClickClear}></button>
+      <button onClick={onClickClear}>Apague Todos seus Matches</button>
       </div>
   )
 }

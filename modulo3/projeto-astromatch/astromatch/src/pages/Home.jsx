@@ -22,6 +22,7 @@ export default function Home(props) {
             id: id,
             choice: true
         }
+        
         axios.post(`${URL_CHOOSE}`, body)
             .then((res) => {
                 if (res.data.isMatch) {

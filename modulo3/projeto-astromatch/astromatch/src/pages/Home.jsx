@@ -9,7 +9,6 @@ export default function Home(props) {
  const getUsers = () => {
   axios.get(`${URL_PERSON}`)
   .then((res) => {
-    console.log(res.data.profile)
     setUsers(res.data.profile)
     
   })
@@ -17,6 +16,24 @@ export default function Home(props) {
     console.log(err)
   })
 }
+
+const ChoosePeople = (id) => {
+    const body = {
+        id: id,
+        choice: true
+    }
+    axios.post(`${URL_CHOOSE}`, body)
+    .then((res) => {
+        if (res.data.isMatch) {
+            alert(`Deu Match ${users.name}`)
+        }
+     })
+    .catch((err) => {
+        console.log(err)
+    })
+}
+
+
 
 useEffect(() => {
     getUsers()
@@ -34,6 +51,9 @@ useEffect(() => {
         <h2>Nome: {users.name}</h2>
         <h3>idade: {users.age}</h3>
         <p> Biografia: {users.bio} </p>
+        <hr />
+        <button onClick={() => {ChoosePeople(users.id)}}>Gostei</button>
+        <button onClick={() => {getUsers()}}>Próximo</button>
         </div>
     </div>
   )

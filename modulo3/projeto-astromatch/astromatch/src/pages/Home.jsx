@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { URL_PERSON, URL_CHOOSE} from '../constants/credentials'
+import ResetButton from '../components/ResetButton'
+import styled from 'styled-components'
+import Coracao from '../img/Coracao1.png'
+import X from "../img/X.jpg"
+import Fire from "../img/purple.png"
+import { Header } from '../components/header'
+import { Image, SectionPeople, SectionButton } from '../components/styledHome'
+
 
 export default function Home(props) {
 
@@ -44,25 +52,29 @@ export default function Home(props) {
 
     return (
         <div>
-            <div>
+            <Header>
                 <h1> AstroMatch</h1>
-                <button onClick={() => props.goToMatchScreen()}>troca</button>
-                <div>
+                <button type="button" onClick={() => props.goToMatchScreen()}><img src={Fire} height="40rem" width="40rem"></img></button>
+                </Header>
+                <SectionPeople>
                     {users ? (
-                        <div>
-                            <img width={'150rem'} src={users.photo} alt={users.name} />
-                            <h2>Nome: {users.name}</h2>
-                            <h3>idade: {users.age}</h3>
+                        <SectionPeople>
+                            <Image src={users.photo} alt={users.name} />
+                            <p>Nome: {users.name}, idade: {users.age}</p>
                             <p> Biografia: {users.bio} </p>
-                            <hr />
-                            <button onClick={() => { choosePeople(users.id) }}>Gostei</button>
-                            <button onClick={getUsers}>Próximo</button>
-                        </div>)
+                            <SectionButton>
+                            <button onClick={() => { choosePeople(users.id) }}><img src={Coracao} height="40rem" width="40rem"></img></button>
+                            <button onClick={getUsers}><img src={X} height="40rem" width="40rem"></img></button>
+                            </SectionButton>
+                        </SectionPeople>)
                         :
-                        (<p>Tenha seu sonho de amor e veja seus Matches</p>)
+                        (<div>
+                        <p>Tenha seu sonho de amor e veja seus Matches</p>
+                        <ResetButton getUsers={getUsers} />
+                        </div>)
                     }
-                </div>
-            </div>
+                </SectionPeople>
+            
         </div>
     )
 

@@ -3,6 +3,8 @@ import './App.css';
 import React, {useState} from 'react'
 import Home from "./pages/Home"
 import Matchpage from "./pages/Matchpage"
+import styled from 'styled-components';
+import {Container, ContainerPai} from './components/styledApp'
 
 function App() {
  const [currentScreen, setCurrentScreen] = useState("home")
@@ -24,10 +26,12 @@ const selectScreen = () => {
 
  }
   return (
-    <div>
+    <ContainerPai>
+    <Container>
       {selectScreen()}
      
-    </div>
+    </Container>
+    </ContainerPai>
   );
 }
 

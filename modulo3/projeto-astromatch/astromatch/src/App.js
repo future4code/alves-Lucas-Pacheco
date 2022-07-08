@@ -6,6 +6,8 @@ import Matchpage from "./pages/Matchpage"
 import styled from 'styled-components';
 import {Container, ContainerPai} from './components/styledApp'
 import { createGlobalStyle } from 'styled-components';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 const SytleGlobal = createGlobalStyle`
 body {
@@ -35,6 +37,17 @@ const selectScreen = () => {
  }
   return (
     <section>
+      <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
     <SytleGlobal /> 
     <ContainerPai>
     <Container>

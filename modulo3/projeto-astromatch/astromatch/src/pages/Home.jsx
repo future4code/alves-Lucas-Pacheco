@@ -7,7 +7,8 @@ import X from "../img/X.jpg"
 import Fire from "../img/purple.png"
 import { Header } from '../components/header'
 import { Image, SectionPeople, SectionButton } from '../components/styledHome'
-
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 
 export default function Home(props) {
@@ -34,7 +35,9 @@ export default function Home(props) {
         axios.post(`${URL_CHOOSE}`, body)
             .then((res) => {
                 if (res.data.isMatch) {
-                    alert(`Deu Match ${users.name}`)
+                    toast(` você tem um Match com ${users.name}`, {
+                        icon: <img src = {Fire} height="25px" width="25px" />
+                    })
                 }
                 getUsers()
 
@@ -53,7 +56,7 @@ export default function Home(props) {
     return (
         <div>
             <Header>
-                <h1> AstroMatch</h1>
+                <h1> AstroMatch </h1>
                 <button type="button" onClick={() => props.goToMatchScreen()}><img src={Fire} height="40rem" width="40rem"></img></button>
             </Header>
             <SectionPeople>

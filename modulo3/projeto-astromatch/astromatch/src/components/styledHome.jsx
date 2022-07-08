@@ -25,6 +25,7 @@ export const SectionButton = styled.section`
 display: flex;
 justify-content: space-between;
 height: 50px;
+width: 280px;
 border-top: 1px solid  rgb(196, 126, 242);
 align-items: center;
 

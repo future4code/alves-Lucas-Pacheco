@@ -24,10 +24,10 @@ p {
 export const SectionButton = styled.section`
 display: flex;
 justify-content: space-between;
-width:300px;
 height: 50px;
 border-top: 1px solid  rgb(196, 126, 242);
 align-items: center;
+
 
 Button {
    background-color: transparent;

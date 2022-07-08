@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { URL_MATCHES, URL_CLEAR  } from '../constants/credentials'
+import { Header } from '../components/header'
+import Fire from "../img/purple.png"
+import {ScrollCard, ContainerMatches} from '../components/styledMatch'
+import ResetButton from '../components/ResetButton'
+
 
 export default function Matchpage(props) {
   const [matchUsers, setMatchUsers] = useState([])
@@ -21,42 +26,27 @@ export default function Matchpage(props) {
   }, [matchUsers])
 
   const displayMatch = matchUsers.map((person) => {
-    return (<div>
-    <img width={"150rem"} src={person.photo} alt={person.name} />
-    <h4>{person.name}</h4>
-    </div>
+    return (<ContainerMatches>
+    <img  src={person.photo} alt={person.name} />
+    <p>{person.name}</p>
+    </ContainerMatches>
     ) 
     
   })
 
-  const clear = () => {
-    axios.put(`${URL_CLEAR}`)
-    .then((res) => {
-        console.log(res)
-    })
-    .catch((err) => {
-        console.log(err)
-    })
-}
 
-const onClickClear = () => {
-clear()
-alert('Busque Novos Amores')
-
-
-}
   
   return (
     <div>
-      <div> 
+      <Header> 
        <h1> AstroMatch</h1>
-       <button onClick={() => props.goToHome()}>troca</button>
-      </div>
-      <div>
+       <button onClick={() => props.goToHome()}><img src={Fire} height="40rem" width="40rem"></img></button>
+      </Header>
+      <ScrollCard>
         {displayMatch}
-        </div>
-      <hr /> 
-      <button onClick={onClickClear}>Apague Todos seus Matches</button>
+        </ScrollCard>
+      <hr />
+      <ResetButton />
       </div>
   )
 }

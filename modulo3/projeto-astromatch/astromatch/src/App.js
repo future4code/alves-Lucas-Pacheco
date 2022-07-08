@@ -5,6 +5,14 @@ import Home from "./pages/Home"
 import Matchpage from "./pages/Matchpage"
 import styled from 'styled-components';
 import {Container, ContainerPai} from './components/styledApp'
+import { createGlobalStyle } from 'styled-components';
+
+const SytleGlobal = createGlobalStyle`
+body {
+  font-family: 'Kalam', cursive;
+  margin: 0;
+  padding: 0;
+}`
 
 function App() {
  const [currentScreen, setCurrentScreen] = useState("home")
@@ -26,12 +34,16 @@ const selectScreen = () => {
 
  }
   return (
+    <section>
+    <SytleGlobal /> 
     <ContainerPai>
     <Container>
       {selectScreen()}
      
     </Container>
     </ContainerPai>
+    </section>
+    
   );
 }
 

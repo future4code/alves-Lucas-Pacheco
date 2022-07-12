@@ -15,11 +15,11 @@ export default function Router() {
     <Routes>
         <Route index element={< HomePage />} />
         <Route path="ListTrips" element={< ListTripsPage />} />
-        <Route path="AdminHome" element={<AdminHomePage />} />
+        <Route path="AdminHome" element={<AdminHomePage idProps="id" />} />
         <Route path="AplicationForm" element ={< AplicationFormPage />} />
         <Route path="CreateTrip" element = { < CreateTripPage /> } />
         <Route path="Login" element = {< LoginPage /> } />
-        <Route path="TripDetails" element = {<TripDetailsPage />} />
+        <Route path="TripDetails/:id" element = {<TripDetailsPage />} />
     </Routes>
     </BrowserRouter>
   )

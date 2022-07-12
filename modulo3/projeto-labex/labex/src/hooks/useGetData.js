@@ -1,5 +1,5 @@
 import {BASE_URL} from '../constants/credentiais'
-import React,{ useState, useEffect} from 'react'
+import React, { useState, useEffect} from 'react'
 import axios from 'axios'
 
 export function useGetData(path) {
@@ -13,7 +13,7 @@ export function useGetData(path) {
       .get(`${BASE_URL}${path}`)
       .then((res) => {
         setLoading(false)
-        console.log(res)
+        console.log("Olá foi", res.data)
         setDados(res.data)
       })
       .catch((err) => {

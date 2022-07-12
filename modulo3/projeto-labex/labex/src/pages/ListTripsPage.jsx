@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useGetData } from '../hooks/useGetData'
 import { useNavigate } from 'react-router-dom'
-import { goToHomePage, goToPreviousPage } from '../routes/cordinator'
+import { goToHomePage, goToPreviousPage, goToAplicationForm } from '../routes/cordinator'
+import Header from '../components/Header'
+
 export default function ListTripsPage() {
   const navigate = useNavigate()
   const { dados, loading, erro } = useGetData("/trips")
@@ -31,8 +33,9 @@ export default function ListTripsPage() {
 
   return (
     <div>
+      < Header />
       <h1> LISTA DE VIAGENS </h1>
-      <button onClick={() => goToHomePage(navigate)}>Home Page</button>
+      <button onClick={() => goToAplicationForm(navigate)}>Se Inscreva</button>
       <button onClick={() => goToPreviousPage(navigate)}>Voltar</button>
       {displayTrips()}
     </div>

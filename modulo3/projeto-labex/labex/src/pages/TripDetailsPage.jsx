@@ -1,7 +1,11 @@
 import React from 'react'
+import Header from '../components/Header'
 
 export default function TripDetailsPage() {
   return (
-    <div>TripDetailsPage</div>
+    <div>
+      < Header />
+      <h1>TripDetailsPage</h1>
+      </div>
   )
 }

@@ -13,7 +13,6 @@ export default function AdminHomePage(props) {
   const navigate = useNavigate()
   const { dados, loading, erro } = useGetData("/trips")
   const trips = dados?.trips
-  const [trip, settrip] = useState(false)
   
   useProtectedPage()
 
@@ -25,8 +24,7 @@ export default function AdminHomePage(props) {
     .then((res) => {
       alert(`A Viagem ${trip.name} foi deletado com sucesso`)
       finalTrip()
-      settrip(!trip)
-      
+      document.location.reload(true)
     })
     .catch((error) => {
       alert("Não foi possível deletar a viagem entre contato com a equipe de problemas")

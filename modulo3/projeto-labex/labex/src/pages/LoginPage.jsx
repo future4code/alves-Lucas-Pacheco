@@ -1,59 +1,61 @@
 import Header from '../components/Header'
 import { useNavigate } from 'react-router-dom'
 import { goToAdmHome, goToPreviousPage } from '../routes/cordinator'
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import axios from 'axios'
 import { BASE_URL } from '../constants/credentiais'
-export  default function LoginPage() {
+import { useForm } from '../hooks/useForm'
+
+
+
+export default function LoginPage() {
+  
   const navigate = useNavigate()
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const {form, handleChange} = useForm({email: "", password: ""})
   
 
-  const handleChangeEmail = (event) => {
-    setEmail(event.target.value)
 
-  }
 
-  const handleChangePassword = (event) => {
-    setPassword(event.target.value)
-  }
-
-  const onSubmitLogin = () => {
-    const body = {
-      email: email,
-      password: password,
-    }
+  const onSubmitLogin = (event) => {
+    event.preventDefault()      
     axios.post
-    (`${BASE_URL}/login`, body)
-    .then((res) => {
-      console.log("Deu Certo", res.data)
-      localStorage.setItem('token', res.data.token)
-      goToAdmHome(navigate)
-    })
-    .catch((err) => {
+      (`${BASE_URL}/login`, form)
+      .then((res) => {
+        console.log("Deu Certo", res.data)
+        localStorage.setItem('token', res.data.token)
+        goToAdmHome(navigate)
+      })
+      .catch((err) => {
         alert(`Não Autorizado`)
-      
-    })
+
+      })
   }
-  
+
   return (
     <div>
       < Header />
       <h1>Login</h1>
-      <input 
-       placeholder='email'
-       type="email"
-       value={email}
-       onChange={handleChangeEmail}/>
-      <input 
-      placeholder='senha'
-      type="password"
-      value={password}
-      onChange={handleChangePassword}/>
-      <button onClick={() => onSubmitLogin()}>Entrar</button>
-      {/* <button onClick={() => goToAdmHome(navigate)}>Entrar</button> */}
+      <form onSubmit={onSubmitLogin}>
+        <input
+          name="email"
+          placeholder='email'
+          type="email"
+          value={form.email}
+          onChange={handleChange}
+          required
+        />
+        <input
+          name="password"
+          placeholder='senha'
+          type="password"
+          value={form.password}
+          onChange={handleChange}
+          required
+          pattern={"^.{3,}"}
+          title={"Sua senha deve ter no mínimo 3 caracteres"} />
+        <button>Entrar</button>
+      </form>
       <button onClick={() => goToPreviousPage(navigate)}>Voltar</button>
-      </div>
+    </div>
   )
 }

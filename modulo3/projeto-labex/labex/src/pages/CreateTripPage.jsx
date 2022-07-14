@@ -2,85 +2,93 @@ import React, { useState, useEffect } from 'react'
 import Header from '../components/Header'
 import axios from 'axios'
 import { BASE_URL, HEADERS } from '../constants/credentiais'
-
+import { useForm } from '../hooks/useForm'
+import { goToListTripsPage } from '../routes/cordinator'
+import { useNavigate } from 'react-router-dom'
 
 export default function CreateTripPage() {
-  const [name, setName] = useState()
-  const [planet, setPlanet] = useState()
-  const [date, setDate] = useState()
-  const [description, setDescription] = useState()
-  const [durationInDays, setDurantionInDays] = useState()
+  const navigate = useNavigate()
+  const [loading, setLoading] = useState(false)
+  const {form, handleChange, cleanFields} = useForm({
+    name: "", 
+    planet: "", 
+    date: "", 
+    description: "", 
+    durationInDays: "" 
+  })
 
-  const handleChangeName = (event) => {
-    setName(event.target.value)
-  }
+  const onSubmitCreateTrip = (event) => {
+    event.preventDefault()
+    setLoading(true);
+  
 
-  const handleChangePlanet = (event) => {
-    setPlanet(event.target.value)
-  }
+  axios.
+  post(`${BASE_URL}/trips`,  form, HEADERS)
+  .then((res) => {
+    alert(`Viagem foi Cadastrada com sucesso!`)
+    cleanFields()
+    setLoading(false)
+  }).catch((err) => {
+   console.log(err)
+  })
+}
 
-  const handleChangeDate = (event) => {
-    setDate(event.target.value)
-  }
 
-  const handleChangeDescription = (event) => {
-    setDescription(event.target.value)
-  }
-
-  const handleChangeDuration = (event) => {
-    setDurantionInDays(event.target.value)
-  }
-
-  const onSubmitCreateTrip = () => {
-    const body = {
-      name: name,
-      planet: planet,
-      date: date,
-      description: description,
-      durationInDays: durationInDays
-    }
-    axios
-    .post(`${BASE_URL}/trips`, HEADERS, body)
-    .then((res) => {
-      alert(`Sua Viagem foi criado!`)
-    })
-    .catch((err) => {
-      alert(err.response.message)
-    })
-
-  }
   
   return (
     <div>
       < Header />
       <div>
-      <h1>Criar Viagem</h1>
-      <input 
-       placeholder='Nome da Viagem'
-       type="text"
-       value={name}
-       onChange={handleChangeName}/>
-      <input 
-      placeholder='planet'
-      type="text"
-      value={planet}
-      onChange={handleChangePlanet}/>
-      <input 
-      placeholder='data'
-      type="date"
-      value={date}
-      onChange={handleChangeDate}/>
-      <input 
-      placeholder='descrição'
-      type="text"
-      value={description}
-      onChange={handleChangeDescription}/>
-      <input 
-      placeholder='Duração em Dias'
-      type="Number"
-      value={durationInDays}
-      onChange={handleChangeDuration}/>
-      <button onClick={onSubmitCreateTrip}>Criar Viagem</button>
+      <h1>Criando viagem</h1>
+
+      <div>
+        <form onSubmit={onSubmitCreateTrip}> 
+        <input 
+        placeholder='Nome' type="text" 
+        value={form.name} 
+        name={"name"} 
+        onChange={handleChange} 
+        pattern={"^.{3,}"} 
+        title={"Nenhuma viagem deve ter menos de 3 letras, se tiver...  Aumente o nome"} 
+        required
+        />
+        <input 
+         placeholder='planet'
+         value={form.planet}
+         name={"planet"}
+         onChange={handleChange}
+         pattern={"^.{5,}"}
+         title={"Planetas não pode ter menos que 5 letras"}
+         required
+         />
+         <input 
+          placeholder='Data' 
+          type="Date" 
+          id="inputDate" 
+          name={"date"}
+          value={form.date}
+          onChange={handleChange}
+          required/>
+          <input 
+          placeholder='Descrição'
+          value={form.description}
+          name={"description"}
+          onChange={handleChange}
+          pattern={"^.{20,}"}
+          title={"Descrição deve ter no mínimo 20 caracteres"}
+          required 
+          />
+          <input 
+          placeholder='Duração em Dias'
+          value={form.durationInDays}
+          name={"durationInDays"}
+          onChange={handleChange}
+          min={30}
+          type='Number'/>
+          <button>Enviar</button>
+          </form>
+          <button onClick={() => goToListTripsPage(navigate)}>Ver a Lista de Trips</button>
+      </div>
       </div>
     </div>
   )

@@ -13,8 +13,11 @@ body {
 function App() {
   return (
     <div>
+      
       <GlobalStyle />
+      
       <Router />
+
     </div>
   );
 }

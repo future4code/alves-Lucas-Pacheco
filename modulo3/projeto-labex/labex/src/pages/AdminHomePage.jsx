@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import Header from '../components/Header'
 import { useNavigate} from 'react-router-dom'
 import { goToPreviousPage, goToCreateTripPage, goToDetailsTrip } from '../routes/cordinator'
@@ -13,6 +13,7 @@ export default function AdminHomePage(props) {
   const navigate = useNavigate()
   const { dados, loading, erro } = useGetData("/trips")
   const trips = dados?.trips
+  const [trip, settrip] = useState(false)
   
   useProtectedPage()
 
@@ -24,7 +25,7 @@ export default function AdminHomePage(props) {
     .then((res) => {
       alert(`A Viagem ${trip.name} foi deletado com sucesso`)
       finalTrip()
-      navigate()
+      settrip(!trip)
       
     })
     .catch((error) => {
@@ -40,7 +41,7 @@ export default function AdminHomePage(props) {
 
   useEffect(() => {
     finalTrip()
-  },[])
+  },[trip])
 
 
 

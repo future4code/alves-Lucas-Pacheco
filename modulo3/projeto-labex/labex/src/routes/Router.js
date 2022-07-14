@@ -15,7 +15,7 @@ export default function Router() {
     <Routes>
         <Route index element={< HomePage />} />
         <Route path="ListTrips" element={< ListTripsPage />} />
-        <Route path="AdminHome" element={<AdminHomePage idProps="id" />} />
+        <Route path="AdminHome" element={<AdminHomePage  />} />
         <Route path="AplicationForm" element ={< AplicationFormPage />} />
         <Route path="CreateTrip" element = { < CreateTripPage /> } />
         <Route path="Login" element = {< LoginPage /> } />

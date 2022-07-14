@@ -33,38 +33,57 @@ export default function TripDetailsPage() {
    })
   }, [])
 
-  const decisionCadidates = (candidatesId, choice) => {
+  const decisionCadidatesApproved = (candidatesid) => {
     const body = {
-      approve: choice
+      approve: true
     }
 
-    axios.put(`${BASE_URL}/trips/${tripInfo.id}/candidates/${candidatesId}/decide`, body, HEADERS)
+    axios.put(`${BASE_URL}/trips/${tripInfo.id}/candidates/${candidatesid}/decide`, body, HEADERS)
     .then((res) => {
-      if(choice === true) {
-        alert("Candidato aprovado!")
+      alert("Você foi aprovado")
 
-      } else {
-        alert("O Canditato foi reprovado")
-      }
+     
       document.location.reload(true)
     })
     .catch((err) => {
       alert("Um Erro aconteceu entre em contato com grupo de devs")
     })
   }
-  const pendingCanditates = candidates.map((candidate) => {
-    <div key={candidate.id}>
-      <p>{candidate.name}</p>
-      <p>{candidate.age}</p>
-      <p>{candidate.profession}</p>
-      <p>{candidate.country}</p>
-      <p>{candidate.applicationText}</p>
-      <button onClick={() => decisionCadidates(candidate.id, true)}>Aprovar</button>
-      <button onClick={() => decisionCadidates(candidate.id, false)}>Reprovar</button>
+
+  const decisionCadidatesReproved = ( candidatesid) => {
+    const body = {
+      approve: false
+    }
+
+    axios.put(`${BASE_URL}/trips/${params.tripId}/candidates/${candidatesid}/decide`, body, HEADERS)
+    .then((res) => {
+      alert("Você foi Reprovado")
+
+     
+      document.location.reload(true)
+    })
+    .catch((err) => {
+      alert("Um Erro aconteceu entre em contato com grupo de devs")
+    })
+  }
+
+
+  const pendingCanditates = candidates?.map((candidate) => {
+    return <div key={candidate.id}>
+      <p>nome: {candidate.name}</p>
+      <p>idade: {candidate.age}</p>
+      <p>Profissão: {candidate.profession}</p>
+      <p>País:{candidate.country}</p>
+      <p>Texto De Candidatura: {candidate.applicationText}</p>
+      <div>
+      <button onClick={() => decisionCadidatesApproved(candidate.id)}>Aprovar</button>
+      <button onClick={() => decisionCadidatesReproved(candidate.id)}>Reprovar</button>
+      </div>
     </div>
   })
+  
   const aprovedCandidates = tripInfo && tripInfo.approved.map((candidate) => {
-    <div key={candidate.id}>
+    return <div key={candidate.id}>
     <p>{candidate.name}</p>
     <p>{candidate.age}</p>
     <p>{candidate.profession}</p>

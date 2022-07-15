@@ -7,7 +7,7 @@ import { BASE_URL } from '../constants/credentiais'
 import { useForm } from '../hooks/useForm'
 import { PaginaLogin, DivLogin, FormContainer, ContainerTituloCard, Title, InputForm, ButtonForm } from '../Styled/styledLoginPage'
 import { Button } from '../Styled/styledHeader'
-
+import { ToastContainer, toast } from 'react-toastify'
 
 
 
@@ -24,12 +24,12 @@ export default function LoginPage() {
     axios.post
       (`${BASE_URL}/login`, form)
       .then((res) => {
-        console.log("Deu Certo", res.data)
+        toast.success("Você foi loogado")
         localStorage.setItem('token', res.data.token)
         goToAdmHome(navigate)
       })
       .catch((err) => {
-        alert(`Não Autorizado`)
+        toast.error(`Não Autorizado`)
 
       })
   }

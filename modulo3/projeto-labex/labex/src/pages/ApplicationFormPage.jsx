@@ -9,7 +9,7 @@ import { useGetData } from '../hooks/useGetData'
 import { Countries } from '../components/Countries'
 import { ContainerButtonsCreate, FormCreate, InputForm, PaginaApp, SelectForm } from '../Styled/styledAppForm'
 import { ButtonList, H1 } from '../Styled/styledAdmHome'
-
+import { ToastContainer, toast } from 'react-toastify'
 
 export default function ApplicationFormPage() {
   const navigate = useNavigate()
@@ -39,12 +39,12 @@ export default function ApplicationFormPage() {
     axios
       .post(`${BASE_URL}/trips/${form.tripId}/apply`, body)
       .then((res) => {
-        alert(`Ìnscrição realizada com sucesso!`)
+        toast.success(`Ìnscrição realizada com sucesso!`)
         cleanFields()
         setLoading(false)
       })
       .catch((err) => {
-        alert(err.response.message)
+        toast.error(err.response.message)
       })
   }
 

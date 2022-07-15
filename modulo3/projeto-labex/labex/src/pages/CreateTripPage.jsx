@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom'
 import { useProtectedPage } from '../hooks/useProtectedPage'
 import { FormCreate, InputForm, PaginaCreate, ContainerButtonsCreate } from '../Styled/styledCreateTrip'
 import { ButtonList, H1 } from '../Styled/styledAdmHome'
+import { ToastContainer, toast } from 'react-toastify'
 export default function CreateTripPage() {
   const navigate = useNavigate()
   const [loading, setLoading] = useState(false)
@@ -29,7 +30,7 @@ export default function CreateTripPage() {
   axios.
   post(`${BASE_URL}/trips`,  form, HEADERS)
   .then((res) => {
-    alert(`Viagem foi Cadastrada com sucesso!`)
+    toast.success(`Viagem foi Cadastrada com sucesso!`)
     cleanFields()
     setLoading(false)
   }).catch((err) => {

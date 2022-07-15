@@ -7,6 +7,7 @@ import { HEADERS, BASE_URL } from '../constants/credentiais'
 import axios from 'axios'
 import { ButtonDelete, ButtonList, ContainerButtons, DivAdm, DivName, H1, Image, PaginaAdm } from '../Styled/styledAdmHome'
 import Comet from '../assents/comet.png'
+import { ToastContainer, toast } from 'react-toastify'
 
 
 
@@ -24,12 +25,12 @@ export default function AdminHomePage(props) {
     HEADERS
     )
     .then((res) => {
-      alert(`A Viagem ${trip.name} foi deletado com sucesso`)
+      toast.sucess(`A Viagem ${trip.name} foi deletado com sucesso`)
       finalTrip()
       document.location.reload(true)
     })
     .catch((error) => {
-      alert("Não foi possível deletar a viagem entre contato com a equipe de problemas")
+      toast.error("Não foi possível deletar a viagem entre contato com a equipe de problemas")
     })
   }
 
@@ -63,7 +64,7 @@ export default function AdminHomePage(props) {
    const onClickClearCache = () => {
     localStorage.clear("token")
     navigate("/Login/")
-    alert("Você foi deslogado!")
+    toast.sucess("Você foi deslogado!")
    }
 
   return (

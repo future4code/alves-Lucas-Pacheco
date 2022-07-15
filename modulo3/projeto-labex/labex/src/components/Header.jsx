@@ -19,7 +19,6 @@ export default function Header() {
         <div>
         <Button onClick={() => goToLoginPage(navigate)}>Login</Button>
         <Button onClick={() => goToHomePage(navigate)}> Home </Button>
-        <Button nClick={() => goToPreviousPage(navigate)}>Voltar</Button>
         </div>
     </HeaderStyled>
 

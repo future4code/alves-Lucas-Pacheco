@@ -1,6 +1,8 @@
 
 import Router from './routes/Router';
 import { createGlobalStyle } from "styled-components"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const GlobalStyle = createGlobalStyle`
 body {
@@ -15,7 +17,17 @@ body {
 function App() {
   return (
     <div>
-      
+      <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
       <GlobalStyle />
       
       <Router />

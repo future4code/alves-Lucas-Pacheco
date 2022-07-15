@@ -1,16 +1,13 @@
 
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-
 import { BASE_URL, HEADERS } from '../constants/credentiais'
 import { useNavigate, useParams } from 'react-router-dom'
-
 import { useProtectedPage } from '../hooks/useProtectedPage'
-
 import { ButtonDetails, DivDetails, P, PaginaDetails } from '../Styled/styledTripDetails'
 import { H1 } from '../Styled/styledAdmHome'
 import { goToPreviousPage } from '../routes/cordinator'
-
+import { ToastContainer, toast } from 'react-toastify'
 import { ButtonGroup } from '@chakra-ui/react'
 import { DivTrip } from '../Styled/styledListTrip'
 
@@ -49,13 +46,13 @@ export default function TripDetailsPage() {
 
     axios.put(`${BASE_URL}/trips/${tripInfo.id}/candidates/${candidatesid}/decide`, body, HEADERS)
     .then((res) => {
-      alert("Você foi aprovado")
+      toast("Você foi aprovado")
 
      
       document.location.reload(true)
     })
     .catch((err) => {
-      alert("Um Erro aconteceu entre em contato com grupo de devs")
+      toast.error("Um Erro aconteceu entre em contato com grupo de devs")
     })
   }
 
@@ -66,13 +63,13 @@ export default function TripDetailsPage() {
 
     axios.put(`${BASE_URL}/trips/${params.tripId}/candidates/${candidatesid}/decide`, body, HEADERS)
     .then((res) => {
-      alert("Você foi Reprovado")
+      toast.success("Foi Reprovado")
 
      
       document.location.reload(true)
     })
     .catch((err) => {
-      alert("Um Erro aconteceu entre em contato com grupo de devs")
+      toast.error("Um Erro aconteceu entre em contato com grupo de devs")
     })
   }
 

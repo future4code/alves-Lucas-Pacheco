@@ -7,7 +7,7 @@ import { HEADERS, BASE_URL } from '../constants/credentiais'
 import axios from 'axios'
 import { ButtonDelete, ButtonList, ContainerButtons, DivAdm, DivName, H1, Image, PaginaAdm } from '../Styled/styledAdmHome'
 import Comet from '../assents/comet.png'
-import { ToastContainer, toast } from 'react-toastify'
+import {  toast } from 'react-toastify'
 
 
 
@@ -25,7 +25,7 @@ export default function AdminHomePage(props) {
     HEADERS
     )
     .then((res) => {
-      toast.sucess(`A Viagem ${trip.name} foi deletado com sucesso`)
+      toast(`A Viagem ${trip.name} foi deletado com sucesso`)
       finalTrip()
       document.location.reload(true)
     })

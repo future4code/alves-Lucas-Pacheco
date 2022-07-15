@@ -1,6 +1,6 @@
 import React from 'react'
 import {useNavigate} from 'react-router-dom'
-import { goToLoginPage, goToPreviousPage, goToHomePage } from '../routes/cordinator'
+import { goToLoginPage, goToHomePage } from '../routes/cordinator'
 import Logo from "../assents/labexlogo.png"
 import styled from 'styled-components'
 import { HeaderStyled, Image, Center, Button } from '../Styled/styledHeader'

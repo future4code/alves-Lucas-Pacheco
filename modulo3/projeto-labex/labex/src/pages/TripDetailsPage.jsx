@@ -6,6 +6,13 @@ import { BASE_URL, HEADERS } from '../constants/credentiais'
 import { useNavigate, useParams } from 'react-router-dom'
 import { Countries } from '../components/Countries'
 import { useProtectedPage } from '../hooks/useProtectedPage'
+import Loading from '../assents/loading.gif'
+import { ButtonDetails, DivDetails, PaginaDetails } from '../Styled/styledTripDetails'
+import { H1 } from '../Styled/styledAdmHome'
+import { goToPreviousPage } from '../routes/cordinator'
+import { Button } from '../Styled/styledHomePage'
+import { ButtonGroup } from '@chakra-ui/react'
+
 
 export default function TripDetailsPage() {
   const navigate = useNavigate()
@@ -74,17 +81,18 @@ export default function TripDetailsPage() {
       <p>nome: {candidate.name}</p>
       <p>idade: {candidate.age}</p>
       <p>Profissão: {candidate.profession}</p>
-      <p>País:{candidate.country}</p>
+      <p>País: {candidate.country}</p>
       <p>Texto De Candidatura: {candidate.applicationText}</p>
-      <div>
-      <button onClick={() => decisionCadidatesApproved(candidate.id)}>Aprovar</button>
-      <button onClick={() => decisionCadidatesReproved(candidate.id)}>Reprovar</button>
-      </div>
+      <ButtonGroup>
+      <ButtonDetails onClick={() => decisionCadidatesApproved(candidate.id)}>Aprovar</ButtonDetails>
+      <ButtonDetails onClick={() => decisionCadidatesReproved(candidate.id)}>Reprovar</ButtonDetails>
+      </ButtonGroup>
     </div>
   })
   
   const aprovedCandidates = tripInfo && tripInfo.approved.map((candidate) => {
     return <div key={candidate.id}>
+    <b>Informações do Candidato: {candidate.name}</b>
     <p>{candidate.name}</p>
     <p>{candidate.age}</p>
     <p>{candidate.profession}</p>
@@ -95,25 +103,27 @@ export default function TripDetailsPage() {
   
 
   return (
-    <div>
-     
-      <h1>Informações da Viagem!</h1> 
-      { tripInfo &&
+    <PaginaDetails>
+      <div>
+      <H1>{tripInfo && tripInfo.name}</H1> 
+      {tripInfo &&
       (tripInfo !== undefined ? ( 
-      <>
-      <p>{tripInfo.name}</p>
-       <p>{tripInfo.planet}</p>
-       <p>{tripInfo.durationInDays}</p>
-       <p>{tripInfo.date}</p>
-       <p>{tripInfo.description}</p>
-       <h2>Candidatos Pendentes</h2>
-       {pendingCanditates && pendingCanditates.length > 0 ? pendingCanditates : <h4> Não a candidatos pendentes</h4>}
-       <h2>Candidatos Aprovados</h2>
-       {aprovedCandidates && aprovedCandidates.length > 0 ?  aprovedCandidates : <h4>Não a candidatos aprovados </h4>}
-       </> 
+      <DivDetails>
+      <p><b>Nome:</b>{tripInfo.name}</p>
+       <p><b>Planeta:</b>{tripInfo.planet}</p>
+       <p><b>Duração:</b>{tripInfo.durationInDays}</p>
+       <p><b>Data:</b>{tripInfo.date}</p>
+       <p><b>Descrição:</b>{tripInfo.description}</p>
+       <ButtonDetails onClick={() => goToPreviousPage(navigate)}>Voltar</ButtonDetails>
+       <H1>Candidatos Pendentes</H1>
+       {pendingCanditates && pendingCanditates.length > 0 ? pendingCanditates : <H1> Não a candidatos pendentes</H1>}
+       <H1>Candidatos Aprovados</H1>
+       {aprovedCandidates && aprovedCandidates.length > 0 ?  aprovedCandidates : <H1>Não a candidatos aprovados </H1>}
+       </DivDetails> 
       ) : (
-        <h1> Não Há Viagens planejadas! </h1>      
+        <H1> Não Há Viagens planejadas! </H1>      
         ))}
-      </div>
+        </div>
+      </PaginaDetails>
   )
 }

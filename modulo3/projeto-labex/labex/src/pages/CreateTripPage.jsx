@@ -3,9 +3,11 @@ import Header from '../components/Header'
 import axios from 'axios'
 import { BASE_URL, HEADERS } from '../constants/credentiais'
 import { useForm } from '../hooks/useForm'
-import { goToListTripsPage } from '../routes/cordinator'
+import { goToListTripsPage, goToPreviousPage } from '../routes/cordinator'
 import { useNavigate } from 'react-router-dom'
 import { useProtectedPage } from '../hooks/useProtectedPage'
+import { FormCreate, InputForm, PaginaCreate, ContainerButtonsCreate } from '../Styled/styledCreateTrip'
+import { ButtonList, H1 } from '../Styled/styledAdmHome'
 export default function CreateTripPage() {
   const navigate = useNavigate()
   const [loading, setLoading] = useState(false)
@@ -38,14 +40,15 @@ export default function CreateTripPage() {
 
   
   return (
-    <div>
+    <PaginaCreate>
       
       
-      <h1>Criando viagem</h1>
+     
 
       <div>
-        <form onSubmit={onSubmitCreateTrip}> 
-        <input 
+      <H1>Criando viagem</H1>
+        <FormCreate onSubmit={onSubmitCreateTrip}> 
+        <InputForm 
         placeholder='Nome' type="text" 
         value={form.name} 
         name={"name"} 
@@ -54,7 +57,7 @@ export default function CreateTripPage() {
         title={"Nenhuma viagem deve ter menos de 3 letras, se tiver...  Aumente o nome"} 
         required
         />
-        <input 
+        <InputForm
          placeholder='planet'
          value={form.planet}
          name={"planet"}
@@ -63,7 +66,7 @@ export default function CreateTripPage() {
          title={"Planetas não pode ter menos que 5 letras"}
          required
          />
-         <input 
+         <InputForm
           placeholder='Data' 
           type="Date" 
           id="inputDate" 
@@ -71,7 +74,7 @@ export default function CreateTripPage() {
           value={form.date}
           onChange={handleChange}
           required/>
-          <input 
+          <InputForm 
           placeholder='Descrição'
           value={form.description}
           name={"description"}
@@ -80,18 +83,22 @@ export default function CreateTripPage() {
           title={"Descrição deve ter no mínimo 20 caracteres"}
           required 
           />
-          <input 
+          <InputForm 
           placeholder='Duração em Dias'
           value={form.durationInDays}
           name={"durationInDays"}
           onChange={handleChange}
           min={30}
           type='Number'/>
-          <button>Enviar</button>
-          </form>
-          <button onClick={() => goToListTripsPage(navigate)}>Ver a Lista de Trips</button>
+          <ContainerButtonsCreate>
+          <ButtonList>Enviar</ButtonList>
+          <ButtonList onClick={() => goToListTripsPage(navigate)}>Ver a Lista de Trips</ButtonList>
+          <ButtonList onClick={() => goToPreviousPage (navigate)}> Voltar</ButtonList>
+          </ContainerButtonsCreate>
+          </FormCreate>
+          
       </div>
-      </div>
+      </PaginaCreate>
     
   )
 }

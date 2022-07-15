@@ -5,7 +5,7 @@ import styled from 'styled-components'
  display: flex;
  justify-content:space-between;
  background-color: #52c0D9;
- width:100vw;
+ width:100%;
  height:15vh;
  align-items: center; `
 

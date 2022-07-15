@@ -49,7 +49,7 @@ export default function ApplicationFormPage() {
 
   return (
     <div>
-      < Header />
+      
       <h1>Se Cadastre para uma Viagem</h1>
       <button onClick={() => goToPreviousPage(navigate)}>Voltar</button>
       <form onSubmit={onSubmitCreate}>

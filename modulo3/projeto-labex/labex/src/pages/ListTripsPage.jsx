@@ -33,7 +33,6 @@ export default function ListTripsPage() {
 
   return (
     <div>
-      < Header />
       <h1> LISTA DE VIAGENS </h1>
       <button onClick={() => goToAplicationForm(navigate)}>Se Inscreva</button>
       <button onClick={() => goToPreviousPage(navigate)}>Voltar</button>

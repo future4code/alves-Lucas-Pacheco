@@ -96,7 +96,7 @@ export default function TripDetailsPage() {
 
   return (
     <div>
-      < Header />
+     
       <h1>Informações da Viagem!</h1> 
       { tripInfo &&
       (tripInfo !== undefined ? ( 

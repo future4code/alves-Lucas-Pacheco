@@ -5,6 +5,9 @@ import React from 'react'
 import axios from 'axios'
 import { BASE_URL } from '../constants/credentiais'
 import { useForm } from '../hooks/useForm'
+import { PaginaLogin, DivLogin, FormContainer, ContainerTituloCard, Title, InputForm, ButtonForm } from '../Styled/styledLoginPage'
+import { Button } from '../Styled/styledHeader'
+
 
 
 
@@ -32,11 +35,14 @@ export default function LoginPage() {
   }
 
   return (
-    <div>
-      < Header />
-      <h1>Login</h1>
-      <form onSubmit={onSubmitLogin}>
-        <input
+    <PaginaLogin>
+    <DivLogin>
+      <ContainerTituloCard>
+      <Title>Login</Title>
+      <Button onClick={() => goToPreviousPage(navigate)}>Voltar</Button>
+      </ContainerTituloCard>
+      <FormContainer onSubmit={onSubmitLogin}>
+        <InputForm 
           name="email"
           placeholder='email'
           type="email"
@@ -44,7 +50,7 @@ export default function LoginPage() {
           onChange={handleChange}
           required
         />
-        <input
+        <InputForm
           name="password"
           placeholder='senha'
           type="password"
@@ -53,9 +59,11 @@ export default function LoginPage() {
           required
           pattern={"^.{3,}"}
           title={"Sua senha deve ter no mínimo 3 caracteres"} />
-        <button>Entrar</button>
-      </form>
-      <button onClick={() => goToPreviousPage(navigate)}>Voltar</button>
-    </div>
+        <ButtonForm>Entrar</ButtonForm>
+      </FormContainer>
+      
+      </DivLogin>
+      </PaginaLogin>
+    
   )
 }

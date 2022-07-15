@@ -39,8 +39,8 @@ export default function CreateTripPage() {
   
   return (
     <div>
-      < Header />
-      <div>
+      
+      
       <h1>Criando viagem</h1>
 
       <div>
@@ -92,6 +92,6 @@ export default function CreateTripPage() {
           <button onClick={() => goToListTripsPage(navigate)}>Ver a Lista de Trips</button>
       </div>
       </div>
-    </div>
+    
   )
 }

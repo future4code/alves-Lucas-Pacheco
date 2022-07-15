@@ -6,12 +6,13 @@ import ListTripsPage from '../pages/ListTripsPage'
 import LoginPage from '../pages/LoginPage'
 import TripDetailsPage from '../pages/TripDetailsPage'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-
+import Header from '../components/Header'
 import React from 'react'
 
 export default function Router() {
   return (
     <BrowserRouter>
+    < Header />
     <Routes>
         <Route index element={< HomePage />} />
         <Route path="ListTrips" element={< ListTripsPage />} />

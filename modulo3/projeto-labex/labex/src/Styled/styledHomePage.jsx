@@ -4,8 +4,8 @@ import ImageHome from '../assents/HomePage.jpg'
 export const PaginaHome = styled.div`
 display: flex;
 justify-content: center;
-width: 100vw;
-min-height: 1000px;
+width: 100%;
+min-height: 1110px;
  position: absolute;
  background-image: url(${ImageHome}) ;
  background-repeat: no-repeat;

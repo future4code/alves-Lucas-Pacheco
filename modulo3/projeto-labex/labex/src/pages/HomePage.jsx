@@ -11,8 +11,7 @@ export default function HomePage() {
 
 
   return (
-    <div>
-      < Header />
+    
       <PaginaHome>
       <SectionPage>
       <ContainerButton>
@@ -21,6 +20,6 @@ export default function HomePage() {
        </ContainerButton>
        </SectionPage>
       </PaginaHome>
-      </div>
+     
   )
 }

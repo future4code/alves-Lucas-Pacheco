@@ -1,11 +1,13 @@
 import React, {useEffect, useState} from 'react'
-import Header from '../components/Header'
 import { useNavigate} from 'react-router-dom'
 import { goToPreviousPage, goToCreateTripPage, goToDetailsTrip } from '../routes/cordinator'
 import { useGetData } from '../hooks/useGetData'
 import { useProtectedPage } from '../hooks/useProtectedPage'
 import { HEADERS, BASE_URL } from '../constants/credentiais'
 import axios from 'axios'
+import { ButtonDelete, ButtonList, ContainerButtons, DivAdm, DivName, H1, Image, PaginaAdm } from '../Styled/styledAdmHome'
+import Comet from '../assents/comet.png'
+
 
 
 
@@ -32,10 +34,10 @@ export default function AdminHomePage(props) {
   }
 
   const tripsList = dados && trips && trips.map((trip) => {
-    return <li key={trip.id}>
-      <div onClick={() => goToDetailsTrip(navigate, trip.id)}>{trip.name}</div> 
-      <button onClick={() => handleClickDeleteTrip(trip)}>Deletar Viagem</button>
-    </li>
+    return <DivAdm key={trip.id}>
+      <DivName onClick={() => goToDetailsTrip(navigate, trip.id)}>{trip.name}</DivName> 
+      <ButtonDelete onClick={() => handleClickDeleteTrip(trip)}><Image src={Comet} /></ButtonDelete>
+    </DivAdm>
   })
 
   useEffect(() => {
@@ -65,13 +67,16 @@ export default function AdminHomePage(props) {
    }
 
   return (
-    <div>
-      < Header />
-      <h1>Lista de Viagens!</h1>
-      <button onClick={() => goToCreateTripPage(navigate)}> Criar Trip </button>
-      <button onClick={() => goToPreviousPage(navigate)}> Voltar</button>
-      <button onClick={onClickClearCache}>Está deslogado!</button>
+    <PaginaAdm>
+      <div>
+      <H1>Painel Adminstrativo!</H1>
+      <ContainerButtons>
+      <ButtonList onClick={() => goToCreateTripPage(navigate)}> Criar Trip </ButtonList>
+      <ButtonList onClick={() => goToPreviousPage(navigate)}> Voltar</ButtonList>
+      <ButtonList onClick={onClickClearCache}>Está deslogado!</ButtonList>
+      </ContainerButtons>
       {finalTrip()}
-    </div>
+      </div>
+    </PaginaAdm>
   )
 }

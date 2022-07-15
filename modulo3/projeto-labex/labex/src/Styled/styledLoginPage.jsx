@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import ImageLogin from '../assents/LoginPage.jpg'
+import ImageLogin from '../assents/LoginPage.png'
 
 export const PaginaLogin = styled.div`
 display: flex;

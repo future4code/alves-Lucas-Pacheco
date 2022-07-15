@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import ImageDetails from '../assents/TripDetails.jpg'
+import ImageDetails from '../assents/TripDetails.png'
 
 export const PaginaDetails = styled.div`
 display: flex;

@@ -88,7 +88,7 @@ export default function CreateTripPage() {
           value={form.durationInDays}
           name={"durationInDays"}
           onChange={handleChange}
-          min={30}
+          min={50}
           type='Number'/>
           <ContainerButtonsCreate>
           <ButtonList>Enviar</ButtonList>

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import ImageHome from '../assents/HomePage.jpg'
+import ImageHome from '../assents/HomePage.png'
 
 export const PaginaHome = styled.div`
 display: flex;

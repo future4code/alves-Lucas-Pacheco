@@ -1,17 +1,18 @@
-import Header from '../components/Header'
+
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { useGetData } from '../hooks/useGetData'
+
 import { BASE_URL, HEADERS } from '../constants/credentiais'
 import { useNavigate, useParams } from 'react-router-dom'
-import { Countries } from '../components/Countries'
+
 import { useProtectedPage } from '../hooks/useProtectedPage'
-import Loading from '../assents/loading.gif'
-import { ButtonDetails, DivDetails, PaginaDetails } from '../Styled/styledTripDetails'
+
+import { ButtonDetails, DivDetails, P, PaginaDetails } from '../Styled/styledTripDetails'
 import { H1 } from '../Styled/styledAdmHome'
 import { goToPreviousPage } from '../routes/cordinator'
-import { Button } from '../Styled/styledHomePage'
+
 import { ButtonGroup } from '@chakra-ui/react'
+import { DivTrip } from '../Styled/styledListTrip'
 
 
 export default function TripDetailsPage() {
@@ -77,28 +78,28 @@ export default function TripDetailsPage() {
 
 
   const pendingCanditates = candidates?.map((candidate) => {
-    return <div key={candidate.id}>
-      <p>nome: {candidate.name}</p>
-      <p>idade: {candidate.age}</p>
-      <p>Profissão: {candidate.profession}</p>
-      <p>País: {candidate.country}</p>
-      <p>Texto De Candidatura: {candidate.applicationText}</p>
+    return <DivTrip key={candidate.id}>
+      <p><b>nome:</b> {candidate.name}</p>
+      <p><b>idade:</b> {candidate.age}</p>
+      <p><b>profissão</b> {candidate.profession}</p>
+      <p><b>País:</b> {candidate.country}</p>
+      <p><b>Texto De Candidatura: </b>{candidate.applicationText}</p>
       <ButtonGroup>
       <ButtonDetails onClick={() => decisionCadidatesApproved(candidate.id)}>Aprovar</ButtonDetails>
       <ButtonDetails onClick={() => decisionCadidatesReproved(candidate.id)}>Reprovar</ButtonDetails>
       </ButtonGroup>
-    </div>
+    </DivTrip>
   })
   
   const aprovedCandidates = tripInfo && tripInfo.approved.map((candidate) => {
-    return <div key={candidate.id}>
+    return <DivTrip key={candidate.id}>
     <b>Informações do Candidato: {candidate.name}</b>
     <p>{candidate.name}</p>
     <p>{candidate.age}</p>
     <p>{candidate.profession}</p>
     <p>{candidate.country}</p>
     <p>{candidate.applicationText}</p>
-  </div>
+  </DivTrip>
   })
   
 
@@ -109,12 +110,14 @@ export default function TripDetailsPage() {
       {tripInfo &&
       (tripInfo !== undefined ? ( 
       <DivDetails>
+        <DivTrip>
       <p><b>Nome:</b>{tripInfo.name}</p>
        <p><b>Planeta:</b>{tripInfo.planet}</p>
        <p><b>Duração:</b>{tripInfo.durationInDays}</p>
        <p><b>Data:</b>{tripInfo.date}</p>
        <p><b>Descrição:</b>{tripInfo.description}</p>
        <ButtonDetails onClick={() => goToPreviousPage(navigate)}>Voltar</ButtonDetails>
+       </DivTrip>
        <H1>Candidatos Pendentes</H1>
        {pendingCanditates && pendingCanditates.length > 0 ? pendingCanditates : <H1> Não a candidatos pendentes</H1>}
        <H1>Candidatos Aprovados</H1>

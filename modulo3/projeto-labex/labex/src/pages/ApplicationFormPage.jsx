@@ -7,6 +7,8 @@ import { goToPreviousPage } from '../routes/cordinator'
 import { useNavigate } from 'react-router-dom'
 import { useGetData } from '../hooks/useGetData'
 import { Countries } from '../components/Countries'
+import { ContainerButtonsCreate, FormCreate, InputForm, PaginaApp, SelectForm } from '../Styled/styledAppForm'
+import { ButtonList, H1 } from '../Styled/styledAdmHome'
 
 
 export default function ApplicationFormPage() {
@@ -48,12 +50,11 @@ export default function ApplicationFormPage() {
 
 
   return (
-    <div>
-      
-      <h1>Se Cadastre para uma Viagem</h1>
-      <button onClick={() => goToPreviousPage(navigate)}>Voltar</button>
-      <form onSubmit={onSubmitCreate}>
-        <select name={'tripId'}
+    <PaginaApp>
+      <div>
+      <H1>Cadastre para uma Viagem</H1> 
+      <FormCreate onSubmit={onSubmitCreate}>
+        <SelectForm name={'tripId'}
           value={form.tripId}
           onChange={handleChange}
           required>
@@ -63,8 +64,8 @@ export default function ApplicationFormPage() {
               <option key={trip.id} value={trip.id}>{trip.name}</option>
             )
           })}
-        </select>
-        <input
+        </SelectForm>
+        <InputForm
           name="name"
           type="text"
           value={form.name}
@@ -74,25 +75,25 @@ export default function ApplicationFormPage() {
           title={"Seu nome deve ter no mínimo 3 letras"}
           required
         />
-        <input
+        <InputForm
           name='age'
           type='number'
           value={form.age}
           onChange={handleChange}
           placeholder='Idade'
-          min={16}
+          min={18}
           required
         />
-        <input
+        <InputForm
           name='applicationText'
           value={form.applicationText}
           onChange={handleChange}
           placeholder='Por que você gostaria de viajar conosco?'
-          pattern={"^.{10,}"}
+          pattern={"^.{20,}"}
           title={"Vamos escreva mais um pouco!"}
           required
         />
-        <input
+        <InputForm
           name='profession'
           value={form.profession}
           onChange={handleChange}
@@ -101,7 +102,7 @@ export default function ApplicationFormPage() {
           title="Sua profissão precisa ter mais que 2 caracteres"
         />
 
-        <select
+        <SelectForm
           name={"country"}
           defaultValue={""}
           onChange={handleChange} required>
@@ -113,9 +114,14 @@ export default function ApplicationFormPage() {
               </option>
             );
           })}
-        </select>
-        <button>Enviar sua inscrição!</button>
-      </form>
-    </div>
+        </SelectForm>
+        <ContainerButtonsCreate>
+        <ButtonList>Enviar sua inscrição!</ButtonList>
+        <ButtonList onClick={() => goToPreviousPage(navigate)}>Voltar</ButtonList>
+        </ContainerButtonsCreate>
+      </FormCreate>
+        </div>
+    </PaginaApp>
+    
   )
 }

@@ -1,13 +1,13 @@
 import styled from 'styled-components'
-import ImageCreate from '../assents/ImagemCreate.png'
+import ImageApp from '../assents/ImageApp.png'
 
-export const PaginaCreate = styled.div`
+export const PaginaApp = styled.div`
 display: flex;
 justify-content: center;
 width: 100%;
 min-height: 800px;
  position: absolute;
- background-image: url(${ImageCreate}) ;
+ background-image: url(${ImageApp}) ;
  background-repeat: no-repeat;
  background-size: cover;
  background-position: center; 
@@ -36,3 +36,12 @@ justify-content: space-around;
 width: 500px;
 margin-top: 10px;
 margin-bottom: 10px;` 
+
+export const SelectForm = styled.select`
+    width: 100%;
+    height: 30px;
+    border-radius: 10px;
+    padding: 4px 8px;
+    border-width: 1px;
+    border-color: gray;
+    margin: 0px 0px 15px;`

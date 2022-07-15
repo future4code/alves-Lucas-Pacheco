@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import {useNavigate} from 'react-router-dom'
-import { goToListTripsPage } from '../routes/cordinator'
+import { goToListTripsPage, goToLoginPage } from '../routes/cordinator'
 import Header from '../components/Header'
-import { Button } from '@chakra-ui/react'
+import { PaginaHome, SectionPage, ContainerButton, Button } from '../Styled/styledHomePage'
+
+
+
 export default function HomePage() {
   const navigate = useNavigate()
 
@@ -10,8 +13,14 @@ export default function HomePage() {
   return (
     <div>
       < Header />
-      <h1>HomePage</h1>
-      <Button onClick={() => goToListTripsPage(navigate)}> Ver Viagens </Button>
+      <PaginaHome>
+      <SectionPage>
+      <ContainerButton>
+       <Button onClick={() => goToListTripsPage(navigate)}> Ver Viagens </Button>
+       <Button onClick={() => goToLoginPage(navigate)}>Login</Button>
+       </ContainerButton>
+       </SectionPage>
+      </PaginaHome>
       </div>
   )
 }

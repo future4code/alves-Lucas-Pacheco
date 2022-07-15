@@ -33,13 +33,14 @@ export default function AdminHomePage(props) {
 
   const tripsList = dados && trips && trips.map((trip) => {
     return <li key={trip.id}>
-      <div onClick={() => goToDetailsTrip(navigate, trip.id)}>{trip.name}</div> <button onClick={() => handleClickDeleteTrip(trip)}>Deletar Viagem</button>
+      <div onClick={() => goToDetailsTrip(navigate, trip.id)}>{trip.name}</div> 
+      <button onClick={() => handleClickDeleteTrip(trip)}>Deletar Viagem</button>
     </li>
   })
 
   useEffect(() => {
     finalTrip()
-  },[trip])
+  },[])
 
 
 
@@ -57,17 +58,19 @@ export default function AdminHomePage(props) {
       return <p>"Não há viagens programadas para seu período do Multiverso!"</p>
     }
   }
-
-
-
+   const onClickClearCache = () => {
+    localStorage.clear("token")
+    navigate("/Login/")
+    alert("Você foi deslogado!")
+   }
 
   return (
     <div>
       < Header />
-
       <h1>Lista de Viagens!</h1>
       <button onClick={() => goToCreateTripPage(navigate)}> Criar Trip </button>
       <button onClick={() => goToPreviousPage(navigate)}> Voltar</button>
+      <button onClick={onClickClearCache}>Está deslogado!</button>
       {finalTrip()}
     </div>
   )

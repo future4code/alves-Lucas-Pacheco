@@ -106,10 +106,10 @@ export default function ApplicationFormPage() {
           defaultValue={""}
           onChange={handleChange} required>
           <option value={''}>País de origem:</option>
-          {Countries.map((country) => {
+          {Countries.map((countries) => {
             return (
-              <option value={country} key={country}>
-                {country}
+              <option value={countries} key={countries}>
+                {countries}
               </option>
             );
           })}

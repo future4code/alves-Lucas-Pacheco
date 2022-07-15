@@ -7,6 +7,8 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
+  font-family: 'Kalam', cursive;
+  min-width: 100%;
 }
 `
 

@@ -5,7 +5,7 @@ import { BASE_URL, HEADERS } from '../constants/credentiais'
 import { useForm } from '../hooks/useForm'
 import { goToListTripsPage } from '../routes/cordinator'
 import { useNavigate } from 'react-router-dom'
-
+import { useProtectedPage } from '../hooks/useProtectedPage'
 export default function CreateTripPage() {
   const navigate = useNavigate()
   const [loading, setLoading] = useState(false)
@@ -17,6 +17,8 @@ export default function CreateTripPage() {
     durationInDays: "" 
   })
 
+ useProtectedPage()
+ 
   const onSubmitCreateTrip = (event) => {
     event.preventDefault()
     setLoading(true);

@@ -4,7 +4,8 @@ import axios from 'axios'
 import { useGetData } from '../hooks/useGetData'
 import { BASE_URL, HEADERS } from '../constants/credentiais'
 import { useNavigate, useParams } from 'react-router-dom'
-
+import { Countries } from '../components/Countries'
+import { useProtectedPage } from '../hooks/useProtectedPage'
 
 export default function TripDetailsPage() {
   const navigate = useNavigate()
@@ -14,7 +15,7 @@ export default function TripDetailsPage() {
   const [tripInfo, setTripInfo] = useState()
   const [candidates, setCandidates] = useState([])
 
-  
+  useProtectedPage()
   
   useEffect(() => {
    setLoading(true)

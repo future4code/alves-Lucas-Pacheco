@@ -37,7 +37,7 @@ export default function AdminHomePage(props) {
 
   const tripsList = dados && trips && trips.map((trip) => {
     return <DivAdm key={trip.id}>
-      <DivName onClick={() => goToDetailsTrip(navigate, trip.id)}>{trip.name}</DivName> 
+      <DivName onClick={() => goToDetailsTrip(navigate,  trip.id)}>{trip.name}</DivName> 
       <ButtonDelete onClick={() => handleClickDeleteTrip(trip)}><Image src={Comet} /></ButtonDelete>
     </DivAdm>
   })

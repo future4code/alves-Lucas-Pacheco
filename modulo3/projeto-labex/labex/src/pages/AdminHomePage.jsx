@@ -50,7 +50,8 @@ export default function AdminHomePage(props) {
 
   const finalTrip = () => {
     if (loading) {
-      return <img src={Gif} alt="imagem Gif" /> 
+      return <p>Carregando 
+      </p > 
 
     } else if (!loading && erro) {
       return <h4>Veja sua Conexão com seu computador</h4>

@@ -1,5 +1,5 @@
-# Link Surge: http://fresh-cord.surge.sh/
-
+# Link Surge:https://well-off-crate.surge.sh/
+quarrelsome-beast.surge.sh
 
 
 ## Iniciando Projeto
@@ -36,6 +36,10 @@ Estilização com certeza é meu ponto mais fraco, o qual eu mais sofro, me pene
 
 Também não conseguir a responsividade mais pelo cansaço da semana inteira, mas pretendo me sueprar no próximo ou retornado a esse só para fazer este tipo de coisa.
 
+Bem hoje eu descobrir que meu botão de reprovar pessoa não estava funcionando e quando eu abria o VsCode
+O Site funcionava totalmente normal, no entanto quando arrumei o botão e coloquei Loading na porta 3k funcionava no surge não, então deixei o link dos dois surges ai.
+
+No caso o que eu arrumei do botão reprovar foi o tripInfo.id
 ### 
 
 ### 

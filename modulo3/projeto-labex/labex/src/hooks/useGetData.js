@@ -13,7 +13,6 @@ export function useGetData(path) {
       .get(`${BASE_URL}${path}`)
       .then((res) => {
         setLoading(false)
-        console.log("Olá foi", res.data)
         setDados(res.data)
       })
       .catch((err) => {

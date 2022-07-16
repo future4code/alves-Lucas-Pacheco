@@ -89,7 +89,7 @@ export default function TripDetailsPage() {
     </DivTrip>
   })
   
-  const aprovedCandidates = tripInfo && tripInfo.approved.map((candidate) => {
+  const aprovedCandidates = tripInfo && tripInfo?.approved.map((candidate) => {
     return <DivTrip key={candidate.id}>
     <b>Informações do Candidato: {candidate.name}</b>
     <p>{candidate.name}</p>

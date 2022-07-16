@@ -28,7 +28,7 @@ export default function ListTripsPage() {
         </DivTrip>
       })
     } else if (trips?.length === 0) {
-      return <p> Nenhuma viagem disponível. </p>
+      return <H1> Nenhuma viagem disponível. </H1>
     }
   }
 

@@ -59,7 +59,7 @@ export default function AdminHomePage(props) {
         <div>{tripsList}</div>
       )
     } else {
-      return <p>"Não há viagens programadas para seu período do Multiverso!"</p>
+      return <H1>"Não há viagens programadas para seu período do Multiverso!"</H1>
     }
   }
    const onClickClearCache = () => {

@@ -106,7 +106,7 @@ export default function TripDetailsPage() {
       <div>
       <H1>{tripInfo && tripInfo.name}</H1> 
       {loading && <img src={Gif}  alt='Gif Loading'/> }
-      {!loading && tripInfo &&
+      {!loading &&  tripInfo &&
       (tripInfo !== undefined ? ( 
       <DivDetails>
         <DivTrip>

@@ -1,4 +1,4 @@
-# Link Surge: https:http://friendly-baby.surge.sh
+# Link Surge: http://fresh-cord.surge.sh/
 
 
 
@@ -18,7 +18,12 @@ Suas funções para pessoas comum, são ver a lista de viagem e se inscreverem p
 Já para ADMS
 Você consegue logar pelo seguinte login:
 	email:  astrodev@gmail.com.br
-	senha: astronauta123
+	senha: astronauta123 
+
+	
+	email: astrodev@gmail.com,
+	password: astronauta123456
+
 
 Você consegue assim que logado acessar a tela de Adm e quando não estiver nela acessar pelo Header, como adm você pode criar viagens, ver os candidatos para cada viagem e dizer se eles estão aprovados ou não, como também pode apagar viagens clicando no cometinha.
 

@@ -10,6 +10,7 @@ import { goToPreviousPage } from '../routes/cordinator'
 import { ToastContainer, toast } from 'react-toastify'
 import { ButtonGroup } from '@chakra-ui/react'
 import { DivTrip } from '../Styled/styledListTrip'
+import Gif from '../assents/loading.gif'
 
 
 export default function TripDetailsPage() {
@@ -61,7 +62,7 @@ export default function TripDetailsPage() {
       approve: false
     }
 
-    axios.put(`${BASE_URL}/trips/${params.tripId}/candidates/${candidatesid}/decide`, body, HEADERS)
+    axios.put(`${BASE_URL}/trips/${tripInfo.id}/candidates/${candidatesid}/decide`, body, HEADERS)
     .then((res) => {
       toast.success("Foi Reprovado")
 
@@ -104,11 +105,12 @@ export default function TripDetailsPage() {
     <PaginaDetails>
       <div>
       <H1>{tripInfo && tripInfo.name}</H1> 
-      {tripInfo &&
+      {loading && <img src={Gif}  alt='Gif Loading'/> }
+      {!loading && tripInfo &&
       (tripInfo !== undefined ? ( 
       <DivDetails>
         <DivTrip>
-      <p><b>Nome:</b>{tripInfo.name}</p>
+       <p><b>Nome:</b>{tripInfo.name}</p>
        <p><b>Planeta:</b>{tripInfo.planet}</p>
        <p><b>Duração:</b>{tripInfo.durationInDays}</p>
        <p><b>Data:</b>{tripInfo.date}</p>

@@ -5,7 +5,7 @@ import { goToHomePage, goToPreviousPage, goToAplicationForm } from '../routes/co
 import Header from '../components/Header'
 import { ButtonListTrip, ContainerButtonsList, DivTrip, PaginaListTrip } from '../Styled/styledListTrip'
 import { H1 } from '../Styled/styledAdmHome'
-
+import Gif from '../assents/loading.gif'
 
 export default function ListTripsPage() {
   const navigate = useNavigate()
@@ -14,7 +14,7 @@ export default function ListTripsPage() {
 
   const displayTrips = () => {
     if (loading) {
-      return <p> Teste </p>
+      return <img src={Gif} alt='Gif loading ' />
     } else if (!loading && erro) {
       return <p>{erro}</p>
     } else if (trips && trips.length > 0) {

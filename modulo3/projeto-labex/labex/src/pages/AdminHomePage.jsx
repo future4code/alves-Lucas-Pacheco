@@ -8,6 +8,7 @@ import axios from 'axios'
 import { ButtonDelete, ButtonList, ContainerButtons, DivAdm, DivName, H1, Image, PaginaAdm } from '../Styled/styledAdmHome'
 import Comet from '../assents/comet.png'
 import {  toast } from 'react-toastify'
+import Gif from '../assents/loading.gif'
 
 
 
@@ -49,7 +50,7 @@ export default function AdminHomePage(props) {
 
   const finalTrip = () => {
     if (loading) {
-      return <h4>Carregando</h4>
+      return <img src={Gif} alt="imagem Gif" /> 
 
     } else if (!loading && erro) {
       return <h4>Veja sua Conexão com seu computador</h4>
@@ -64,7 +65,7 @@ export default function AdminHomePage(props) {
    const onClickClearCache = () => {
     localStorage.clear("token")
     navigate("/Login/")
-    toast.sucess("Você foi deslogado!")
+    toast("Você foi deslogado!")
    }
 
   return (

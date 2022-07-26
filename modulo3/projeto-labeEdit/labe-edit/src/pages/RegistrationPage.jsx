@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom'
 const RegistrationPage = () => {
     const navigate = useNavigate()
 
-    const {form, handleChange} = useForm({ 
+    const {form, handleChange, cleanFields} = useForm({ 
         username:"",
         email: "",
 	    password: ""
@@ -21,6 +21,7 @@ const RegistrationPage = () => {
         .then((res) => {
             alert("Você se Cadastrou")
             console.log(res)
+            cleanFields()
         })
         .cath((err) => {
             alert("Esse Email já foi cadastrado")

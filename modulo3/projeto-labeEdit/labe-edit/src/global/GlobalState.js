@@ -4,12 +4,13 @@ import GlobalContext from './GlobalContext'
 
 export const GlobalState = (props) => {
     const Provider = GlobalContext.Provider
-
-    const value = {
-
+    const [stateLike, setStateLike] = useState(false)
+    const values = {
+     setStateLike,
+     stateLike
     }
   return (
-    <Provider value={value}>
+    <Provider value={{values}}>
         {props.children}
     </Provider>
   )

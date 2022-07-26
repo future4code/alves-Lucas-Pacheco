@@ -15,7 +15,7 @@ import Header from '../components/Header'
         <Route index exact path="/" element={<FeedPage />} />
         <Route path='/Postes/:id' element={<PostPage />} />
         <Route path='/login' element={<LoginPage />}/>
-        <Route path=':number' element={<FeedPage />}/>
+        <Route path='/Feed/:number' element={<FeedPage />}/>
         <Route path='/Registro' element={<RegistrationPage />} />
         <Route path='*' element={< ErrorPage />} />
     </Routes>

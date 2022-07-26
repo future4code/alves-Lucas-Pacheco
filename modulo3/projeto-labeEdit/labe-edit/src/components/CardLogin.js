@@ -1,13 +1,12 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import axios from 'axios'
 import { BASE_URL } from '../constants/credentiais'
-import  useForm  from '../hooks/useForm'
-import { goToregistry, goToFeed } from '../routes/cordinator'
+import useForm from '../hooks/useForm'
+import { goToFeed } from '../routes/cordinator'
 import { useNavigate } from 'react-router-dom'
-import CardLogin from '../components/CardLogin'
 
-const LoginPage = () => {
-   const navigate = useNavigate()
+const CardLogin = () => { 
+    const navigate = useNavigate()
    const {form, handleChange, cleanFields} = useForm({email: "", password: ""})
    
 
@@ -25,12 +24,9 @@ const LoginPage = () => {
         alert('Se Registre primeiro')
     })
   }  
-
   return (
     <div>
-        <h1>LabEddit</h1>
-        <h4>O Projeto de Rede Social da Labenu</h4>
-        <form onSubmit={onSubmitLogin}>
+    <form onSubmit={onSubmitLogin}>
             <label for='email'>Email</label>
             <input 
              name="email"
@@ -54,10 +50,9 @@ const LoginPage = () => {
             />
             <button>Continuar</button>
         </form>
-        <hr />
-        <button onClick={() => goToregistry(navigate)}>Se Cadastre</button>
-    </div>
+        </div>
   )
 }
 
-export default LoginPage
+export default CardLogin
+

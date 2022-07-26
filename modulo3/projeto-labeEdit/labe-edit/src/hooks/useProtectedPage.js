@@ -10,7 +10,7 @@ export function useProtectedPage() {
 
         if (token === null) {
           alert(`Você ainda não está logado!`)
-          navigate("/");
+          navigate("/login");
         }
     }, [])
   

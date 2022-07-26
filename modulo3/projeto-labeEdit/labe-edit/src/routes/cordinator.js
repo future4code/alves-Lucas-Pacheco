@@ -1,5 +1,5 @@
 export const goToLogin = (navigate) => {
-    navigate("/")
+    navigate("/login")
 }
 
 export const goToregistry = (navigate) => {
@@ -7,7 +7,7 @@ export const goToregistry = (navigate) => {
 }
 
 export const  goToFeed = (navigate) => {
-    navigate('/Publicações')
+    navigate('/')
 }
 
 export const goToPost = (navigate, id) => {

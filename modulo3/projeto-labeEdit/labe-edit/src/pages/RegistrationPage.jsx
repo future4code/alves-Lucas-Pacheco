@@ -23,7 +23,7 @@ const RegistrationPage = () => {
             console.log(res)
         })
         .cath((err) => {
-            alert(err.response.message)
+            alert("Esse Email já foi cadastrado")
         })
     }
 
@@ -56,7 +56,7 @@ const RegistrationPage = () => {
          type='password'
          value={form.password}
          onChange={handleChange}
-         pattern={"^.{8, 30}"}
+         pattern={"^.{8,30}"}
          title={"Sua senha deve ter no minimo 8 caracteres a 30"}
          required
          />

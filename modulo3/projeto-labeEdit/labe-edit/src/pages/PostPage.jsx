@@ -1,34 +1,32 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { useProtectedPage } from '../hooks/useProtectedPage'
 import { useNavigate, useParams } from 'react-router-dom'
 import CardDetalhes from '../components/CardDetalhes'
-import CardCreatePost from '../components/CardCreatePost'
+import CreateComments from '../components/CreateComments'
+
 import { useGetData } from '../hooks/useGetData'
 
 const PostPage = () => {
     const navigate = useNavigate()
+    const [stateLike, setStateLike] = useState(false)
+    const [post, setPost] = useState({})
     const params = useParams()
+    const { dados, loading, erro } = useGetData(stateLike, `/posts/${params.id}/comments`)
     useProtectedPage()
-    const { dados, loading, erro } = useGetData("/posts")
-    const displayPost = dados && dados.find(post => post.id === params.id)
-
-    const displayPostFinale = displayPost && displayPost.map((post) => {
-     return (
-        <section key={post.id}>
-            <p>Enviado por: {post.username}</p>
-            <h4>{post.title}</h4>
-            <h3>{post.body}</h3>
-            </section>
-     )
-    })
-
     
+    useEffect(() => {
+      const postLocal = JSON.parse(localStorage.getItem("post"))
+      postLocal && setPost(postLocal)
+    },[])
 
-    
   return (
     <div>
-        <CardCreatePost params={params.id} />
-        <CardDetalhes params={params.id}/>
+        <p>Enviado por: {post.username}</p>
+        <p>{post.title}</p>
+        <p>{post.body}</p>
+        <CreateComments stateLike={stateLike} setStateLike={setStateLike} params={params.id}/>
+
+        <CardDetalhes dados={dados} loading={loading} erro={erro} stateLike={stateLike} setStateLike={setStateLike} params={params.id} />
     </div>
   )
 }

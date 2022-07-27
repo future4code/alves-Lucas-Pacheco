@@ -4,6 +4,8 @@ import { BASE_URL } from '../constants/credentiais'
 import  useForm  from '../hooks/useForm'
 import { goToLogin } from '../routes/cordinator'
 import { useNavigate } from 'react-router-dom'
+import { H1 } from '../style/StyleadRegistration'
+import { DivForm } from '../style/StyleadLoginPage'
 
 const RegistrationPage = () => {
     const navigate = useNavigate()
@@ -30,10 +32,8 @@ const RegistrationPage = () => {
 
   return (
     <div>
-        <section>
-            <button onClick={() => goToLogin(navigate)}>entrar</button>
-        </section>
-        <h1>Olá, boas vindas ao LabEddit ;) </h1>
+        <H1>Olá, boas vindas ao LabEddit ;) </H1>
+        <DivForm>
         <form onSubmit={onSignup}>
          <input 
          name='username'
@@ -63,6 +63,7 @@ const RegistrationPage = () => {
          />
          <button>Cadastre</button>
         </form>
+        </DivForm>
     </div>
   )
 }

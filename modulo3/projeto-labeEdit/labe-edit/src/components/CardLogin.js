@@ -4,6 +4,8 @@ import { BASE_URL } from '../constants/credentiais'
 import useForm from '../hooks/useForm'
 import { goToFeed } from '../routes/cordinator'
 import { useNavigate } from 'react-router-dom'
+import { DivForm } from '../style/StyleadLoginPage'
+
 
 const CardLogin = () => { 
     const navigate = useNavigate()
@@ -25,7 +27,7 @@ const CardLogin = () => {
     })
   }  
   return (
-    <div>
+    <DivForm>
     <form onSubmit={onSubmitLogin}>
             <label for='email'>Email</label>
             <input 
@@ -50,7 +52,7 @@ const CardLogin = () => {
             />
             <button>Continuar</button>
         </form>
-        </div>
+        </DivForm>
   )
 }
 

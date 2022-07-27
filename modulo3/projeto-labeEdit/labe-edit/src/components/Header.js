@@ -2,6 +2,11 @@ import { useEffect } from "react"
 import React  from 'react'
 import { goToLogin, goBack } from "../routes/cordinator"
 import { useNavigate } from "react-router-dom"
+import Logo from '../assets/Logo2.svg'
+import Logout from '../assets/Logout.svg'
+import Fechar from '../assets/fechar.svg'
+import Entrar from '../assets/Entrar.svg'
+import { ImageEntrar, ImageHeader, SectionHeader, SectionHeader2, ImageGoBack } from "../style/StyleadHeader"
 
 export default function Header() {
     const navigate = useNavigate()
@@ -19,26 +24,26 @@ export default function Header() {
     const HeaderButton = () => {
     if (window.location.pathname === "/Registro") {
         return (
-            <>
-            <img />
-            <button onClick={() => goToLogin(navigate)}>Entrar</button>
-           </> 
+            <SectionHeader>
+            <ImageHeader src={Logo} alt="loguinho"/>
+            <ImageEntrar src={Entrar} alt="Entrar" onClick={() => goToLogin(navigate)}/>
+           </SectionHeader> 
         )
      
      } else if (window.location.pathname === "/") {
         return (
-            <>
-            <img />
-            <button onClick={onClickClearCache}>Logout</button>
-           </> 
+            <SectionHeader>
+            <ImageHeader src={Logo} alt="loguinho" />
+            <ImageEntrar  src={Logout} alt='Logout'onClick={onClickClearCache} />
+           </SectionHeader> 
         )
-     } else if (window.location.pathname === "/Postes/:id") {
+     } else if (window.location.pathname.includes("/Postes")) {
         return (
-            <>
-            <button onClick={() => goBack(navigate)}>X</button>
-            <img />
-            <button onClick={onClickClearCache}>Logout</button>
-           </> 
+            <SectionHeader2>
+            <ImageGoBack src={Fechar} alt="Voltar" onClick={() => goBack(navigate)} />
+            <ImageHeader src={Logo} alt="loguinho"/>
+            <ImageEntrar src={Logout} alt="logout" onClick={onClickClearCache} />
+           </SectionHeader2> 
         )
      } else {
         return (

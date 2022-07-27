@@ -6,11 +6,16 @@ import { useNavigate } from 'react-router-dom'
 import Cat from '../assets/cat.gif'
 import { goToPost } from '../routes/cordinator'
 import axios from 'axios'
+import { useContext } from 'react'
+import GlobalContext from '../global/GlobalContext'
 
-const CardFeed = ({stateLike, setStateLike}) => {
+const CardFeed = ({stateLike, setStateLike, dados, loading, erro}) => {
+    
+    // const {displayPosts, stateLike, setStateLike} = useContext(GlobalContext)
+    // const [stateLike, setStateLike] = useState(false)
 
     const navigate = useNavigate()
-    const { dados, loading, erro } = useGetData(stateLike,"/posts")
+    // const { dados, loading, erro } = useGetData(stateLike,"/posts")
 
     const likeAndDeslikePost = (id, choice) => {
         console.log(id)
@@ -41,7 +46,6 @@ const CardFeed = ({stateLike, setStateLike}) => {
     }
 
     const displayPosts = dados && dados.map((posts) => {
-        console.log(posts)
         return (<section key={posts.id}>
             <p>Enviado por: {posts.username}</p>
             <h3>{posts.body}</h3>

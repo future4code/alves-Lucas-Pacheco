@@ -4,9 +4,9 @@ import axios from "axios";
 import { BASE_URL, HEADER } from "../constants/credentiais";
 import useForm from "../hooks/useForm";
 import { useNavigate } from "react-router-dom";
-export default function CardCreatePost() {
+export default function CardCreatePost({stateLike, setStateLike}) {
     const { form, handleChange, cleanFields } = useForm({ title: "", body: "" })
-    const [stateCreate, setStateCreate] = useState(false) 
+   
 
     const onSubmitCreate = (event) => {
         event.preventDefault()
@@ -14,8 +14,8 @@ export default function CardCreatePost() {
             .post(`${BASE_URL}/posts`, form, HEADER)
             .then((res) => {
                 alert("Foi criado")
-                console.log(res)
-                setStateCreate(!stateCreate)
+                cleanFields()
+                setStateLike(!stateLike)
             })
             .catch((err) => {
                 alert(err.response.data)

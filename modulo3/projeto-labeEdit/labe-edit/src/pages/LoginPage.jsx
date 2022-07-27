@@ -5,6 +5,9 @@ import  useForm  from '../hooks/useForm'
 import { goToregistry, goToFeed } from '../routes/cordinator'
 import { useNavigate } from 'react-router-dom'
 import CardLogin from '../components/CardLogin'
+import { ButtonForm, ImageLogin, LineImg } from '../style/StyleadLoginPage'
+import Logo from '../assets/Logo.svg'
+import Line from '../assets/Line.svg'
 
 const LoginPage = () => {
    const navigate = useNavigate()
@@ -28,34 +31,14 @@ const LoginPage = () => {
 
   return (
     <div>
-        <h1>LabEddit</h1>
-        <h4>O Projeto de Rede Social da Labenu</h4>
-        <form onSubmit={onSubmitLogin}>
-            <label for='email'>Email</label>
-            <input 
-             name="email"
-             placeholder='Email'
-             type='email'
-             value={form.email}
-             onChange={handleChange}
-             id='email'
-             required
-            />
-            <label for='senha'>Senha</label>
-            <input 
-            name='password'
-            placeholder='Senha'
-            type='password'
-            value={form.password}
-            onChange={handleChange}
-            pattern={"^.{8,}"}
-            title={"Sua senha deve ter no mínimo 8 caracteres e no máximo 30"}
-            required
-            />
-            <button>Continuar</button>
-        </form>
-        <hr />
-        <button onClick={() => goToregistry(navigate)}>Se Cadastre</button>
+      <ImageLogin>
+        <img src={Logo} alt="logo" />
+        <p>O Projeto de Rede Social da Labenu</p>
+        </ImageLogin>
+       
+        <CardLogin />
+        <LineImg src={Line}  alt="Linha de divisão"/>
+        <ButtonForm onClick={() => goToregistry(navigate)}>Se Cadastre</ButtonForm>
     </div>
   )
 }

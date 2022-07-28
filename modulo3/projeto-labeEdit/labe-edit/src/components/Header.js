@@ -6,7 +6,7 @@ import Logo from '../assets/Logo2.svg'
 import Logout from '../assets/Logout.svg'
 import Fechar from '../assets/fechar.svg'
 import Entrar from '../assets/Entrar.svg'
-import { ImageEntrar, ImageHeader, SectionHeader, SectionHeader2, ImageGoBack } from "../style/StyleadHeader"
+import { ImageEntrar, ImageHeader, SectionHeader, SectionHeader2, ImageGoBack, ImageHeader2 } from "../style/StyleadHeader"
 
 export default function Header() {
     const navigate = useNavigate()
@@ -41,7 +41,7 @@ export default function Header() {
         return (
             <SectionHeader2>
             <ImageGoBack src={Fechar} alt="Voltar" onClick={() => goBack(navigate)} />
-            <ImageHeader src={Logo} alt="loguinho"/>
+            <ImageHeader2 src={Logo} alt="loguinho"/>
             <ImageEntrar src={Logout} alt="logout" onClick={onClickClearCache} />
            </SectionHeader2> 
         )

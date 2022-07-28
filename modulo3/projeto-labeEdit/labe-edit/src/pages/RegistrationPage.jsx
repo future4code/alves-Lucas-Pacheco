@@ -6,7 +6,8 @@ import { goToLogin } from '../routes/cordinator'
 import { useNavigate } from 'react-router-dom'
 import { H1 } from '../style/StyleadRegistration'
 import { DivForm } from '../style/StyleadLoginPage'
-
+import { MainContainer } from '../style/StyleadMainContainer'
+import Header from '../components/Header'
 const RegistrationPage = () => {
     const navigate = useNavigate()
 
@@ -31,7 +32,8 @@ const RegistrationPage = () => {
     }
 
   return (
-    <div>
+    <MainContainer>
+      
         <H1>Olá, boas vindas ao LabEddit ;) </H1>
         <DivForm>
         <form onSubmit={onSignup}>
@@ -64,7 +66,7 @@ const RegistrationPage = () => {
          <button>Cadastre</button>
         </form>
         </DivForm>
-    </div>
+    </MainContainer>
   )
 }
 

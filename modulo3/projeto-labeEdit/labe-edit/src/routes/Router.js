@@ -7,10 +7,11 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ErrorPage from '../pages/ErrorPage'
 import Header from '../components/Header'
 
+
  const Router = () => {
   return (
     <BrowserRouter>
-    < Header />
+    <Header />
     <Routes>
         <Route index exact path="/" element={<FeedPage />} />
         <Route path='/Postes/:id' element={<PostPage />} />

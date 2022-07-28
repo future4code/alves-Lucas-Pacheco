@@ -4,6 +4,10 @@ import CardCreatePost from '../components/CardCreatePost'
 import { useGetData } from '../hooks/useGetData'
 import axios from 'axios'
 import { BASE_URL, HEADER } from '../constants/credentiais'
+import { MainContainer } from '../style/StyleadMainContainer'
+import Header from '../components/Header'
+import Line from '../assets/Line.svg'
+import { LineIMG } from '../style/StyleadFeed'
 export default function FeedPage() {
   const [stateLike, setStateLike] = useState(false)
   const { dados, loading, erro } = useGetData(stateLike,"/posts")
@@ -61,10 +65,11 @@ export default function FeedPage() {
   }
 
   return (
-    <div>
+    <MainContainer>
+   
         <CardCreatePost stateLike={stateLike} setStateLike={setStateLike} />
-
+        <LineIMG src={Line} alt="Linha que separa"/>
         <CardFeed dados={dados} loading={loading} erro={erro} stateLike={stateLike} setStateLike={setStateLike} like={like} dislike={dislike}/>
-    </div>
+    </MainContainer>
   )
 }

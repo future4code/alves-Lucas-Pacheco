@@ -8,6 +8,8 @@ import CardLogin from '../components/CardLogin'
 import { ButtonForm, ImageLogin, LineImg } from '../style/StyleadLoginPage'
 import Logo from '../assets/Logo.svg'
 import Line from '../assets/Line.svg'
+import Header from '../components/Header'
+import { MainContainer } from '../style/StyleadMainContainer'
 
 const LoginPage = () => {
    const navigate = useNavigate()
@@ -30,7 +32,8 @@ const LoginPage = () => {
   }  
 
   return (
-    <div>
+    <MainContainer>
+      
       <ImageLogin>
         <img src={Logo} alt="logo" />
         <p>O Projeto de Rede Social da Labenu</p>
@@ -39,7 +42,7 @@ const LoginPage = () => {
         <CardLogin />
         <LineImg src={Line}  alt="Linha de divisão"/>
         <ButtonForm onClick={() => goToregistry(navigate)}>Se Cadastre</ButtonForm>
-    </div>
+    </MainContainer>
   )
 }
 

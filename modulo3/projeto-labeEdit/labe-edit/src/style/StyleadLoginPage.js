@@ -8,6 +8,7 @@ flex-direction: column;
 align-items: center;
 margin-top: 5rem;
 position: relative;
+margin-bottom: 5rem;
 img{
     width: 10rem;
     height: 12rem;
@@ -23,6 +24,7 @@ img{
         font-weight: 300;
         font-size: 16px;
         align-items: center;
+        line-height: 1.3rem;
     }
     
 }`
@@ -39,13 +41,12 @@ label{
 }
 
 form{
-    padding-top: 5.5rem;
+    padding-top: 1rem;
 }
 
 input{
     width: 18rem;
     height: 3.75rem;
-    margin-top: 2%;
     border-radius: 4px;
     border: 1px solid #D5D8DE;
     font-weight: 400;
@@ -68,7 +69,7 @@ button {
 `
 
 export const LineImg = styled.img`
-margin-left: 1.5rem;`
+margin-left: 0.8rem;`
 
 
 export const ButtonForm = styled.button`
@@ -77,7 +78,7 @@ border-radius: 2rem;
 width: 18rem;
 height: 3rem;
 
-margin-left: 3.9rem;
+margin-left: 2.5rem;
 margin-top: 5%;
 color: #FE7E02;
 border: #FE7E02 1px solid;

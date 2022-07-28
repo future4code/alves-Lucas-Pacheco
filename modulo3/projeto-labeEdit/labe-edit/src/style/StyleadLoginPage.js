@@ -68,7 +68,7 @@ button {
 `
 
 export const LineImg = styled.img`
-margin-left: 1.5%`
+margin-left: 1.5rem;`
 
 
 export const ButtonForm = styled.button`
@@ -77,7 +77,7 @@ border-radius: 2rem;
 width: 18rem;
 height: 3rem;
 
-margin-left: 11%;
+margin-left: 3.9rem;
 margin-top: 5%;
 color: #FE7E02;
 border: #FE7E02 1px solid;

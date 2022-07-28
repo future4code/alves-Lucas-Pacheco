@@ -9,7 +9,7 @@ import axios from 'axios'
 import { useContext } from 'react'
 import GlobalContext from '../global/GlobalContext'
 
-const CardFeed = ({stateLike, setStateLike, dados, loading, erro}) => {
+const CardFeed = ({stateLike, setStateLike, dados, loading, erro, like, dislike}) => {
     
     // const {displayPosts, stateLike, setStateLike} = useContext(GlobalContext)
     // const [stateLike, setStateLike] = useState(false)
@@ -17,28 +17,7 @@ const CardFeed = ({stateLike, setStateLike, dados, loading, erro}) => {
     const navigate = useNavigate()
     // const { dados, loading, erro } = useGetData(stateLike,"/posts")
 
-    const likeAndDeslikePost = (id, choice) => {
-        console.log(id)
-        const body = {
-            direction: choice
-        }
-        axios.put(`${BASE_URL}/posts/${id}/votes`, body, HEADER)
-            .then((res) => {
-                if (choice === +1) {
-                    alert("Curtido")
-                   
-                } else {
-                    alert("Descurtido")
-                  
-                  
-                }
-                setStateLike(!stateLike)
-                
-            })
-            .catch((err) => {
-                console.log(err)
-            })
-    }
+    
 
     const handleOnClick = (post, id) => {
         localStorage.setItem("post", JSON.stringify(post))
@@ -50,9 +29,9 @@ const CardFeed = ({stateLike, setStateLike, dados, loading, erro}) => {
             <p>Enviado por: {posts.username}</p>
             <h3>{posts.body}</h3>
             <div>
-                <button onClick={() => likeAndDeslikePost(posts.id, +1)}> like</button>
+                <button onClick={() => like(posts.id)}> like</button>
                 <p>{posts.voteSum}</p>
-                <button onClick={() => likeAndDeslikePost(posts.id, -1)}> Deslike</button>
+                <button onClick={() => dislike(posts.id)}> Deslike</button>
             </div>
             <div onClick={() => { handleOnClick(posts, posts.id) }}>
                 <img />
@@ -64,22 +43,12 @@ const CardFeed = ({stateLike, setStateLike, dados, loading, erro}) => {
         )
     })
 
-    const finalDisplay = () => {
-        if (loading) {
-            return <img src={Cat} alt="Gatinho do Carregamento" />
-        } else if (!loading && erro) {
-            return <h4>Veja sua Conexão com seu computador</h4>
-        } else if (displayPosts && displayPosts.length > 0) {
-            return <div>{displayPosts}</div>
-        } else {
-            return <h1>Não existe Post Disponível crie o seu!</h1>
-        }
-    }
+
 
 
     return (
         <div>
-            {finalDisplay()}
+            {displayPosts}
         </div>
     )
 

@@ -4,6 +4,7 @@ import axios from "axios";
 import { BASE_URL, HEADER } from "../constants/credentiais";
 import useForm from "../hooks/useForm";
 import { useNavigate } from "react-router-dom";
+import { ButtonPost, DisplayForms, InputBody, InputTitle } from "../style/StyleadFeed";
 export default function CardCreatePost({stateLike, setStateLike}) {
     const { form, handleChange, cleanFields } = useForm({ title: "", body: "" })
    
@@ -23,8 +24,8 @@ export default function CardCreatePost({stateLike, setStateLike}) {
     }
     return (
         <div>
-            <form onSubmit={onSubmitCreate}>
-                <input 
+            <DisplayForms onSubmit={onSubmitCreate}>
+                <InputTitle 
                     name="title"
                     placeholder='Título da Postagem'
                     type='text'
@@ -32,7 +33,7 @@ export default function CardCreatePost({stateLike, setStateLike}) {
                     onChange={handleChange}
                     required
                 />
-                <input
+                <InputBody
                     name="body"
                     placeholder='Descrição da Postagem'
                     type='text'
@@ -40,8 +41,8 @@ export default function CardCreatePost({stateLike, setStateLike}) {
                     onChange={handleChange}
                     required
                 />
-                <button>Postar</button>
-            </form>
+                <ButtonPost>Postar</ButtonPost>
+            </DisplayForms>
         </div>
     )
 }

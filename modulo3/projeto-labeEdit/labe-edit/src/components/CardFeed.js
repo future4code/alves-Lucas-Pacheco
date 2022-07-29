@@ -65,25 +65,7 @@ const CardFeed = ({ stateLike, setStateLike, dados, loading, erro, like, dislike
         )
     })
 
-    // const UpVoteColored = () => {
-    //     if(displayPosts.userVote === 1) {
-    //         return UpVoteGreen
-    //     } else if (displayPosts.userVote === false || displayPosts.userVote === null) {
-    //         return UpVote
-
-    //     }
-    // }
-
-    // const DownVoteColored = () => {
-    //     if(displayPosts.userVote === -1) {
-    //         return DownVoteRed
-    //     } else if (displayPosts.userVote === false || displayPosts.userVote === null) {
-    //         return Downvote
-
-    //     }
-    // }
-
-    console.log(displayPosts && displayPosts)
+    
 
 
 

@@ -12,6 +12,8 @@ import axios from 'axios'
 import UpVote from '../assets/cima.svg'
 import Downvote from '../assets/baixo.svg'
 import comentario from '../assets/comentarios.svg'
+import Line from '../assets/Line.svg'
+import { LineIMG2 } from '../style/StyleadCreateComments'
 
 const PostPage = () => {
     const navigate = useNavigate()
@@ -100,10 +102,9 @@ const PostPage = () => {
             </SectionClick>
         </SectionCardFeed>
         </PrincipalContainer>
-        <hr />
         <CreateComments stateLike={stateLike} setStateLike={setStateLike} params={params.id}/>
-
-        <CardDetalhes dados={dados} loading={loading} erro={erro} stateLike={stateLike} setStateLike={setStateLike} params={params.id} like={like} dislike={like}/>
+          <LineIMG2  src={Line} alt="Linha de divisão"/>
+        <CardDetalhes dados={dados} loading={loading} erro={erro} stateLike={stateLike} setStateLike={setStateLike} params={params.id} like={like} dislike={dislike}/>
     </MainContainer>
   )
 }

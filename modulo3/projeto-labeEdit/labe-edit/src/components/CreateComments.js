@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { BASE_URL, HEADER } from '../constants/credentiais'
 import useForm from '../hooks/useForm'
+import { ButtonComment, DisplayFormsComment, InputComment } from '../style/StyleadCreateComments'
 
 export default function CreateComments({ stateLike, setStateLike, params }) {
     const { form, handleChange, cleanFields } = useForm({ body: "" })
@@ -20,17 +21,17 @@ export default function CreateComments({ stateLike, setStateLike, params }) {
             })
     }
     return (
-        <div>
-            <form onSubmit={onSubmitComment}>
-                <input
+        <DisplayFormsComment>
+            <DisplayFormsComment onSubmit={onSubmitComment}>
+                <InputComment
                     name="body"
-                    placeholder='Seu comentário'
+                    placeholder='Adiciona Comentário'
                     value={form.body}
                     onChange={handleChange}
                     required
                 />
-              <button>Comentar</button>
-            </form>
-        </div>
+              <ButtonComment>Responder</ButtonComment>
+            </DisplayFormsComment>
+        </DisplayFormsComment>
     )
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { BASE_URL, HEADER } from '../constants/credentiais'
 import useForm from '../hooks/useForm'
-import { ButtonComment, DisplayFormsComment, InputComment } from '../style/StyleadCreateComments'
+import { ButtonComment, DisplayFormsComment, FatherDiv, InputComment } from '../style/StyleadCreateComments'
 
 export default function CreateComments({ stateLike, setStateLike, params }) {
     const { form, handleChange, cleanFields } = useForm({ body: "" })
@@ -12,7 +12,6 @@ export default function CreateComments({ stateLike, setStateLike, params }) {
         axios
             .post(`${BASE_URL}/posts/${params}/comments`, form, HEADER)
             .then((res) => {
-                alert("Comentado")
                 cleanFields()
                 setStateLike(!stateLike)
             })
@@ -21,7 +20,7 @@ export default function CreateComments({ stateLike, setStateLike, params }) {
             })
     }
     return (
-        <DisplayFormsComment>
+        <FatherDiv>
             <DisplayFormsComment onSubmit={onSubmitComment}>
                 <InputComment
                     name="body"
@@ -30,8 +29,8 @@ export default function CreateComments({ stateLike, setStateLike, params }) {
                     onChange={handleChange}
                     required
                 />
-              <ButtonComment>Responder</ButtonComment>
+                <ButtonComment>Responder</ButtonComment>
             </DisplayFormsComment>
-        </DisplayFormsComment>
+        </FatherDiv>
     )
 }

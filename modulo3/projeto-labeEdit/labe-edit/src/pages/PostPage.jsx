@@ -6,29 +6,25 @@ import CreateComments from '../components/CreateComments'
 import Header from '../components/Header'
 import { useGetData } from '../hooks/useGetData'
 import { MainContainer } from '../style/StyleadMainContainer'
-import { PrincipalContainer, SectionCardFeed, SectionClick, SectionLike, SecttionComment, TextBody, TextName } from '../style/StyleadCardFeed'
 import { BASE_URL, HEADER} from '../constants/credentiais'
 import axios from 'axios'
-import UpVote from '../assets/cima.svg'
-import Downvote from '../assets/baixo.svg'
-import comentario from '../assets/comentarios.svg'
 import Line from '../assets/Line.svg'
 import { LineIMG2 } from '../style/StyleadCreateComments'
-
+import CardComments from '../components/CardComments'
 const PostPage = () => {
     const navigate = useNavigate()
     const [stateLike, setStateLike] = useState(false)
-    const [post, setPost] = useState({})
+    // const [post, setPost] = useState({})
     const params = useParams()
     const { dados, loading, erro } = useGetData(stateLike, `/posts/${params.id}/comments`)
     const [likePost, setLikePost] =  useState(false)
     const [dislikePost, setDislikePost] = useState(false)
     useProtectedPage()
     
-    useEffect(() => {
-      const postLocal = JSON.parse(localStorage.getItem("post"))
-      postLocal && setPost(postLocal)
-    },[])
+    // useEffect(() => {
+    //   const postLocal = JSON.parse(localStorage.getItem("post"))
+    //   postLocal && setPost(postLocal)
+    // },[])
 
  
 
@@ -84,24 +80,7 @@ const PostPage = () => {
 
   return (
     <MainContainer>
-      <PrincipalContainer>
-      <SectionCardFeed key={post.id}>
-            <TextName>Enviado por: {post.username}</TextName>
-            <TextBody>{post.body}</TextBody>
-            <SectionClick>
-                <SectionLike>
-                <button > <img src={UpVote}  alt="like"/></button>
-                <p>{post.voteSum}</p>
-                <button > <img  src={Downvote} alt="Dislike"/></button>
-                </SectionLike>
-            
-            <SecttionComment >
-                <img src={comentario} alt="Caixinha de Comentario"/>
-                <p>{post.comentCount}</p>
-            </SecttionComment>
-            </SectionClick>
-        </SectionCardFeed>
-        </PrincipalContainer>
+        <CardComments />
         <CreateComments stateLike={stateLike} setStateLike={setStateLike} params={params.id}/>
           <LineIMG2  src={Line} alt="Linha de divisão"/>
         <CardDetalhes dados={dados} loading={loading} erro={erro} stateLike={stateLike} setStateLike={setStateLike} params={params.id} like={like} dislike={dislike}/>

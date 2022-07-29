@@ -22,8 +22,6 @@ const RegistrationPage = () => {
         axios.post
         (`${BASE_URL}/users/signup`, form)
         .then((res) => {
-            alert("Você se Cadastrou")
-            console.log(res)
             cleanFields()
         })
         .cath((err) => {

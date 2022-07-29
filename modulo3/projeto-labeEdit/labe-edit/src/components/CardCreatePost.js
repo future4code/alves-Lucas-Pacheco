@@ -14,7 +14,6 @@ export default function CardCreatePost({stateLike, setStateLike}) {
         axios
             .post(`${BASE_URL}/posts`, form, HEADER)
             .then((res) => {
-                alert("Foi criado")
                 cleanFields()
                 setStateLike(!stateLike)
             })

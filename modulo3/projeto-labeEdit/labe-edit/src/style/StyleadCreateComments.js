@@ -1,11 +1,20 @@
 import styled from "styled-components";
 
-export const DisplayFormsComment = styled.form`
+
+export const FatherDiv = styled.div`
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
 padding: 0.75rem 9.0625rem;
+margin-top:1rem;`
+
+export const DisplayFormsComment = styled.form`
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding-top: 1rem;
 margin-top:1rem;
 
 `

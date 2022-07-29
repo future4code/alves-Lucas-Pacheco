@@ -25,6 +25,7 @@ line-height: 1rem;
 color: #000000;
 padding-left: 1.125rem ;
 padding-right: 1.125rem;
+
 `
 
 export const PrincipalContainer = styled.div`

@@ -5,6 +5,7 @@ background: #FBFBFB;
 border: 1px solid #E0E0E0;
 border-radius: 0.75rem;
 padding-left: 1%;
+overflow-wrap: break-word;
 `
 
 export const TextName = styled.p`
@@ -37,6 +38,7 @@ gap: 0.625rem;
 left: 1.875rem;
 right: 1.875rem;
 margin-left: 2%;
+overflow-wrap: break-word;
 `
 
 export const SectionClick = styled.section`

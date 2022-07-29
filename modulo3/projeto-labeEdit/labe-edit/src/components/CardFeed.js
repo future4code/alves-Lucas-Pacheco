@@ -12,16 +12,16 @@ import { PrincipalContainer, SectionCardFeed, SectionClick, SectionLike, Secttio
 import UpVote from '../assets/cima.svg'
 import Downvote from '../assets/baixo.svg'
 import comentario from '../assets/comentarios.svg'
+import UpVoteGreen from '../assets/cimaColorido.svg'
+import DownVoteRed from '../assets/baixoColorido.svg'
 
-const CardFeed = ({stateLike, setStateLike, dados, loading, erro, like, dislike}) => {
-    
-    // const {displayPosts, stateLike, setStateLike} = useContext(GlobalContext)
-    // const [stateLike, setStateLike] = useState(false)
+
+const CardFeed = ({ stateLike, setStateLike, dados, loading, erro, like, dislike }) => {
+
 
     const navigate = useNavigate()
-    // const { dados, loading, erro } = useGetData(stateLike,"/posts")
 
-    
+
 
     const handleOnClick = (post, id) => {
         localStorage.setItem("post", JSON.stringify(post))
@@ -29,33 +29,69 @@ const CardFeed = ({stateLike, setStateLike, dados, loading, erro, like, dislike}
     }
 
     const displayPosts = dados && dados.map((posts) => {
+        const UpVoteColored = () => {
+            if (posts.userVote === 1) {
+                return UpVoteGreen
+            } else  {
+                return UpVote
+
+            }
+        }
+
+        const DownVoteColored = () => {
+            if (posts.userVote === -1) {
+                return DownVoteRed
+            } else {
+                return Downvote
+
+            }
+        }
         return (<SectionCardFeed key={posts.id}>
             <TextName>Enviado por: {posts.username}</TextName>
             <TextBody>{posts.body}</TextBody>
             <SectionClick>
                 <SectionLike>
-                <button onClick={() => like(posts.id)}> <img src={UpVote}  alt="like"/></button>
-                <p>{posts.voteSum}</p>
-                <button onClick={() => dislike(posts.id)}> <img  src={Downvote} alt="Dislike"/></button>
+                    <button onClick={() => like(posts.id)}> <img src={UpVoteColored()} alt="like" /></button>
+                    <p>{posts.voteSum}</p>
+                    <button onClick={() => dislike(posts.id)}> <img src={DownVoteColored()} alt="Dislike" /></button>
                 </SectionLike>
-            
-            <SecttionComment onClick={() => { handleOnClick(posts, posts.id) }}>
-                <img src={comentario} alt="Caixinha de Comentario"/>
-                <p>{posts.comentCount}</p>
-            </SecttionComment>
+
+                <SecttionComment onClick={() => { handleOnClick(posts, posts.id) }}>
+                    <img src={comentario} alt="Caixinha de Comentario" />
+                    <p>{posts.comentCount}</p>
+                </SecttionComment>
             </SectionClick>
         </SectionCardFeed>
         )
     })
 
+    // const UpVoteColored = () => {
+    //     if(displayPosts.userVote === 1) {
+    //         return UpVoteGreen
+    //     } else if (displayPosts.userVote === false || displayPosts.userVote === null) {
+    //         return UpVote
+
+    //     }
+    // }
+
+    // const DownVoteColored = () => {
+    //     if(displayPosts.userVote === -1) {
+    //         return DownVoteRed
+    //     } else if (displayPosts.userVote === false || displayPosts.userVote === null) {
+    //         return Downvote
+
+    //     }
+    // }
+
+    console.log(displayPosts && displayPosts)
 
 
 
     return (
         <PrincipalContainer>
-            
+
             {displayPosts}
-        
+
         </PrincipalContainer>
     )
 

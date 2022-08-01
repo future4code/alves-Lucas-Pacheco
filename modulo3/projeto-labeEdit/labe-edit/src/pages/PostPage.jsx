@@ -80,7 +80,7 @@ const PostPage = () => {
 
   return (
     <MainContainer>
-        <CardComments />
+        <CardComments params={params.id}/>
         <CreateComments stateLike={stateLike} setStateLike={setStateLike} params={params.id}/>
           <LineIMG2  src={Line} alt="Linha de divisão"/>
         <CardDetalhes dados={dados} loading={loading} erro={erro} stateLike={stateLike} setStateLike={setStateLike} params={params.id} like={like} dislike={dislike}/>

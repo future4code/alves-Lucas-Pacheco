@@ -1,0 +1,14 @@
+{
+    "name": "aula-node",
+    "version": "1.0.0",
+    "description": "este é um projeto desenvolvido para aula 09/08",
+    "main": "exercicio2.js", 
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "start": "node ./exercicio2.js"
+
+    },
+    "author": "Alves-Lucas-Magalhães",
+    "license": "ISC"
+  }
+  

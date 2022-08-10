@@ -10,9 +10,16 @@
     "start2": "tsc && node ./build/ex2.js",
     "start3": "tsc && node ./build/ex3.js",
     "start4": "tsc && node ./build/ex4.js",
-    "start5": "tsc && node ./build/ex5.js"
+    "start5": "tsc && node ./build/ex5.js",
+    "start6": "tsc && node ./build/ex6.js",
+    "start7": "tsc && node ./build/ex7.js",
+    "start8": "tsc && node ./build/ex8.js",
+    "start9": "tsc && node ./build/ex9.js"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "drptranslator": "^2.8.0"
+  }
 }

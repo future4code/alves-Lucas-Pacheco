@@ -1,0 +1,15 @@
+{
+  "name": "aprofundamento-typesscript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc && node build/ex1.js",
+    "start2": "tsc && node build/ex2.js",
+    "start3": "tsc && node build/ex3.js",
+    "start4": "tsc && node build/ex4.js"
+  },
+  "author": "Alves-Lucas",
+  "license": "ISC"
+}

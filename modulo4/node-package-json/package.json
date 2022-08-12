@@ -1,0 +1,15 @@
+{
+  "name": "aula-node",
+  "version": "1.0.0",
+  "description": "este é um projeto desenvolvido para aula 09/08",
+  "main": "index.js", 
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./index.js",
+    "start1": "node ./ex1/exercicio1.js",
+    "start2": "node ./ex2/exercicio2.js",
+    "start3" : "node ./ex3/exercicio3"
+  },
+  "author": "Alves-Lucas-Magalhães",
+  "license": "ISC"
+}

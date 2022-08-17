@@ -79,6 +79,11 @@ app.put("/products/:id", (req: Request, res: Response) => {
             throw new Error(` O ${price} sendo negativo é invalido`)
         }
 
+        if(price !== Number) {
+          res.statusCode = 404
+          throw new Error(`O seu preço não é um número!`)
+        }
+
        
 
         const changePrice = list.filter((products) => {

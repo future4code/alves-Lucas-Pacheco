@@ -79,7 +79,7 @@ app.put("/products/:id", (req: Request, res: Response) => {
             throw new Error(` O ${price} sendo negativo é invalido`)
         }
 
-        if(price !== Number) {
+        if(typeof(price) !== "number") {
           res.statusCode = 404
           throw new Error(`O seu preço não é um número!`)
         }

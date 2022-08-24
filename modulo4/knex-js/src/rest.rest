@@ -1,0 +1,21 @@
+GET http://localhost:3003/users/8
+
+###
+GET http://localhost:3003/users/Ana
+
+###
+GET http://localhost:3003/actors/female
+
+###
+PUT http://localhost:3003/actors/8
+Content-Type: application/json
+
+{
+    "salary": 107788
+}
+
+###
+GET http://localhost:3003/atores/8
+
+### 
+GET http://localhost:3003/actor?gender=female

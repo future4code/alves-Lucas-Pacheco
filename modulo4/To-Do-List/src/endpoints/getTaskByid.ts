@@ -23,7 +23,7 @@ const getTaskId = async (req: Request, res: Response) => {
     throw new Error("O Seu Id não foi criado no nosso banco de dados, talvez a tarefa não exista.");
    }
 
-   console.log(user  && user[0].limit_date.split("-").reverse().join("/"))
+  
 
  
 

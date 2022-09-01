@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import selectProductsUserById from "../data/selectProductsUserById";
-import getProductsUser from "../data/selectProductsUserById";
+
 
 
 const getUsersPurchases =async (req: Request, res: Response) => {

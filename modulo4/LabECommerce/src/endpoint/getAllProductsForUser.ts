@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
-import getProductsUser from "../data/getProductsUser";
+import selectProductsUserById from "../data/selectProductsUserById";
+import getProductsUser from "../data/selectProductsUserById";
 
 
 const getUsersPurchases =async (req: Request, res: Response) => {
@@ -13,7 +14,7 @@ const getUsersPurchases =async (req: Request, res: Response) => {
     
    }
 
-   const result = await getProductsUser(user_id)
+   const result = await selectProductsUserById(user_id)
 
    res.status(200).send(result)
 

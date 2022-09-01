@@ -1,6 +1,6 @@
 import connection from "./connection";
 
-const getProductsUser = async (userId: string): Promise<any> => {
+const selectProductsUserById = async (userId: string): Promise<any> => {
 
     const result =  await connection("labecommerce_purchases")
         .select("*")
@@ -11,4 +11,4 @@ const getProductsUser = async (userId: string): Promise<any> => {
 }
 
 
-export default getProductsUser
+export default selectProductsUserById

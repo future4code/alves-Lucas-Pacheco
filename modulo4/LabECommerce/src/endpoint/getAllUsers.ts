@@ -1,57 +1,41 @@
 import { Request, Response } from "express";
 import connection from "../data/connection";
+import selectProductsUserById from "../data/selectProductsUserById";
+
+import selectUsers from "../data/selectUsers";
+
 
 const getAllUsers =async (req: Request, res: Response) => {
     
    try {
-    const result =  await connection("labecommerce_users")
-    .select({
-        id: "id",
-        name: "name",
-        email: "email"
-    })
 
-    const id = result.filter((id) => {
-        return id.id
-    })
+    const result =  await selectUsers()
 
-    console.log(id)
+    for(const user of result){
+        try {
+          const purchases = await selectProductsUserById(user.id)
 
-    // const connectionPrice = await connection("labecommerce_products")
-    // .select("price")
-    // .where("id", productId)
+          user.purchases = purchases
 
-    // const newTotalPrice = connectionPrice.filter((price) => {
-    //     return price.price
-    // })
+          if(purchases.length === 0) {
+            user.purchases = []
+          }
+        } catch (error: any) {
+            user.purchases = []
+        }
+    }
 
-    // const totalPrice = newTotalPrice.find(element => element.price === element.price)
-
-
-    // const result2 = await connection("labecommerce_purchases")
-    // .select("id")
-    // .where("user_id", id)
-
-    // console.log(result2)
-   
-
-    const result3 = await connection("labecommerce_users")
-    .select({
-        id: "id",
-        name: "name",
-        email: "email",
-      
-    })
 
     if(!result.length) {
         res.statusCode = 404
         throw new Error("Não foi encontrado usuários em nosso banco de dados");
         
     }
-
+       
+    res.status(200).send(result)
     
-   res.send(result3)
    } catch (error: any) {
+    
     res.status(res.statusCode || 500).send({message: error.message} || "ocorreu algum erro no servidor")
    }
     

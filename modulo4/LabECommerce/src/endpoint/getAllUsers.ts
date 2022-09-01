@@ -12,17 +12,10 @@ const getAllUsers =async (req: Request, res: Response) => {
     const result =  await selectUsers()
 
     for(const user of result){
-        try {
+      
           const purchases = await selectProductsUserById(user.id)
 
           user.purchases = purchases
-
-          if(purchases.length === 0) {
-            user.purchases = []
-          }
-        } catch (error: any) {
-            user.purchases = []
-        }
     }
 
 

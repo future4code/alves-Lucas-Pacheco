@@ -1,0 +1,9 @@
+POST http://localhost:3003/cep
+Content-Type: application/json
+
+
+{
+    "numero": 445,
+    "complemento": "Casa da Tia Joana",
+    "cep": "05424150"
+}

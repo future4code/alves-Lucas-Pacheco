@@ -1,0 +1,23 @@
+
+POST http://localhost:3003/user/signup
+Content-Type:application/json
+ 
+{
+	"email": "h34hfdshfsdhfsd@gmail.com",
+	"password": "danone"
+}
+
+###
+
+POST http://localhost:3003/user/login
+Content-Type:application/json
+
+{
+	"email": "h34hfdshfsdhfsd@gmail.com",
+	"password": "danone"
+}
+
+### 
+GET http://localhost:3003/user/profile
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZhNmY3YWEzLTBhMmMtNDRlNy1hNGM5LWMzNjcxNzdhOTc4NiIsImlhdCI6MTY2MzAxMjc1NSwiZXhwIjoxNjYzMDk5MTU1fQ.81xv5LL2NUGpWV6lfOEkSE6O5hgJdrAIBZKusNBykuM
+Content-Type: application/json

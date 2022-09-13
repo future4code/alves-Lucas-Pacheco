@@ -1,0 +1,32 @@
+POST http://localhost:3003/user/signup
+Content-Type:application/json
+
+{
+	"email": "danoninho@4gmail.com",
+	"password": "danone",
+    "role": "ADMIN"
+}
+
+###
+
+POST http://localhost:3003/user/login
+Content-Type:application/json
+
+{
+	"email": "danoninho@4gmail.com",
+	"password": "danone"
+}
+
+### 
+GET http://localhost:3003/user/profile
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjFhZGQxOGE2LTAyZjctNDJmYS1hNTFjLWFjZTMzMzVhY2Y3NyIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NjMwOTM5ODcsImV4cCI6MTY2MzA5NzU4N30.6rIywlSukz5X5pD_-KYPEjcdtHdjqFkH2iSrIOQbTRA
+
+
+###
+DELETE http://localhost:3003/user/1add18a6-02f7-42fa-a51c-ace3335acf77
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImIxZGEwMTM0LWFlYzYtNDY2Zi1hNzJhLTZjZjQ3YjMyYTY0OSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MzA5NTM3NywiZXhwIjoxNjYzMDk4OTc3fQ.Gko3Hn_IlQkYeRinrvpGQxCRHlcXogG1u-H7WXFssCw
+
+
+### 
+GET http://localhost:3003/user
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImIxZGEwMTM0LWFlYzYtNDY2Zi1hNzJhLTZjZjQ3YjMyYTY0OSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MzA5NTM3NywiZXhwIjoxNjYzMDk4OTc3fQ.Gko3Hn_IlQkYeRinrvpGQxCRHlcXogG1u-H7WXFssCw

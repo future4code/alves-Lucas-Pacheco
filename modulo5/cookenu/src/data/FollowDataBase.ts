@@ -18,6 +18,23 @@ class FollowDataBase extends BaseDataBase {
          .into(FollowTable)
         
     }
+
+    public deleteFollow = async (id: string): Promise<void> => {
+        await this.getConnetion()
+        .delete()
+        .where({id})
+        .from(FollowTable)
+    }
+
+    public getFollowByProfile = async (profile: string): Promise< FollowDB | undefined> => {
+        const result: FollowDB[] = await this.getConnetion()
+        .select("*")
+        .where({profile})
+        .from(FollowTable)
+
+        return result[0]
+        
+    }
 }
 
 export default FollowDataBase

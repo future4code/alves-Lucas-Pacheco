@@ -45,8 +45,6 @@ class UserController {
                 role = USER_ROLES.NORMAL
             }
 
-
-
             const hashManager = new HashManager();
 
             const hash = await hashManager.hash(password)
@@ -77,11 +75,11 @@ class UserController {
 
             const { email, password } = req.body
 
-            if(!email || !password) {
+            if (!email || !password) {
                 throw new MissingFields
             }
 
- 
+
             if (email.indexOf("@") === -1) {
                 throw new InvalidError("Está faltando um @ em seu email")
             }
@@ -111,10 +109,10 @@ class UserController {
 
             const token = new Authenticator().generateToken(payload)
 
-            res.status(200).send({acess_token: token})
+            res.status(200).send({ acess_token: token })
 
         } catch (error: any) {
-         res.status(error.statusCode || 500).send({ message: error.message || "Algum erro ocorreu no servidor" })
+            res.status(error.statusCode || 500).send({ message: error.message || "Algum erro ocorreu no servidor" })
         }
     }
 
@@ -122,7 +120,7 @@ class UserController {
         try {
             const token = req.headers.authorization as string
 
-            if(!token) {
+            if (!token) {
                 throw new InvalidError("Seu token não foi encontrado no banco de dados")
             }
 
@@ -131,25 +129,67 @@ class UserController {
 
             const authenticator = new Authenticator()
             const payload = authenticator.verifyToken(token)
-            
-            const user  = await userData.getUserById(payload.id)
 
-           
+            if (!payload) {
+                throw new InvalidCredentiais()
+            }
 
+            const user = await userData.getUserById(payload.id)
+
+            if (!user) {
+                throw new InvalidError("Usuário não foi encontrado");
+            }
 
             res.status(200).send({
                 id: user?.id,
                 name: user?.name,
                 email: user?.email,
             })
-            
-            
+
+
         } catch (error: any) {
             res.status(error.statusCode || 500).send({ message: error.message || "Algum erro ocorreu no servidor" })
-        
+
         }
-        
+
     }
+
+    public searchProfile = async (req: Request, res: Response): Promise<any> => {
+        try {
+            const token = req.headers.authorization as string
+            const id = req.params.id
+
+            if (!token) {
+                throw new InvalidError("Seu Token não foi encontrado no banco de dados")
+            }
+
+            const authenticator = new Authenticator();
+            const payload = authenticator.verifyToken(token)
+
+            if (!payload) {
+                throw new InvalidCredentiais()
+            }
+
+            const userData = new UserDataBase()
+            const user = await userData.getUserById(id)
+
+            if (!user) {
+                throw new InvalidError("Usuário não foi encontrado");
+            }
+
+            res.status(200).send({
+                id: user.id,
+                name: user.name,
+                email: user.email
+
+            })
+
+        } catch (error: any) {
+            res.status(error.statusCode || 500).send({ message: error.message || "Algum erro ocorreu no servidor" })
+        }
+    }
+
+    
 }
 
 export default UserController

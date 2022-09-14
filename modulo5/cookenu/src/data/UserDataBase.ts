@@ -1,7 +1,7 @@
 import User, { UserDB } from "../models/User";
 import BaseDataBase from "./BaseDataBase";
 
-
+const userTable: string = "Cookenu_User"
 class UserDataBase extends BaseDataBase {
 
     public createUser = async (user: User): Promise<void> => {
@@ -17,7 +17,7 @@ class UserDataBase extends BaseDataBase {
 
         await this.getConnetion()
         .insert(UserDB)
-        .into("Cookenu_User")
+        .into(userTable)
         
     }
 
@@ -25,17 +25,17 @@ class UserDataBase extends BaseDataBase {
         const result: UserDB[] = await this.getConnetion()
         .select("*")
         .where({email})
-        .from("Cookenu_User")
+        .from(userTable)
 
         return result[0]
     }
 
 
-    public getUserById =async (id: string): Promise<UserDB | undefined> => {
+    public getUserById = async (id: string): Promise<UserDB | undefined> => {
         const result: UserDB[] = await this.getConnetion()
         .select("*")
+        .from(userTable)
         .where({id})
-        .from("Cookenu_User")
 
         return result[0]
     }

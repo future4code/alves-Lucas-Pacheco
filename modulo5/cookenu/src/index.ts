@@ -16,10 +16,14 @@ app.post("/user/unfollow", followController.unFollow)
 
 //GET
 app.get("/profile", userController.userProfile)
+app.get("/user/feed", followController.getRecipesByFollows)
 app.get("/recipes/:id", recipesController.getRecipesById )
 app.get("/user/:id", userController.searchProfile)
 
-//PUT
 
+//PUT
+app.put("/editRecipe/:id", recipesController.editRecipe)
 
 //DELETE
+app.delete("/deleteAccount", userController.deleteAccount)
+app.delete("/deleteRecipe/:id", recipesController.deleteRecipe)

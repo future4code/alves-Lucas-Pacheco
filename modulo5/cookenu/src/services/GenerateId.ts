@@ -8,3 +8,4 @@ class GenerateId {
 }
 
 export default GenerateId
+

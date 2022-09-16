@@ -1,7 +1,7 @@
 import BaseDataBase from "./BaseDataBase";
-import { Follow, FollowDB } from "../models/follow";
+import { Follow, FollowDB } from '../models/Follow'
 
-const FollowTable = "Cookenu_follow"
+export const FollowTable = "Cookenu_follow"
 
 class FollowDataBase extends BaseDataBase {
 
@@ -33,6 +33,18 @@ class FollowDataBase extends BaseDataBase {
         .from(FollowTable)
 
         return result[0]
+        
+    }
+
+    public selectFollowing = async (profile: string) => {
+        const result = await this.getConnetion()
+        .select("follow")
+        .from(FollowTable)
+        .where({
+            profile: profile
+        })
+
+        return result
         
     }
 }

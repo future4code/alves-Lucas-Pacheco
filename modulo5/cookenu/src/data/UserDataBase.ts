@@ -1,5 +1,7 @@
 import User, { UserDB } from "../models/User";
 import BaseDataBase from "./BaseDataBase";
+import { FollowTable } from "./FollowDataBase";
+import { recipesTable } from "./RecipesDataBase";
 
 const userTable: string = "Cookenu_User"
 class UserDataBase extends BaseDataBase {
@@ -38,6 +40,32 @@ class UserDataBase extends BaseDataBase {
         .where({id})
 
         return result[0]
+    }
+
+    public removeAccount = async (userId: string) => {
+        await this.getConnetion()
+        .delete("*")
+        .where({
+            profile: userId
+        })
+        .orWhere({
+            follow: userId
+        })
+        .from(FollowTable)
+
+        await this.getConnetion()
+        .delete("*")
+        .where({
+            user_id: userId
+        })
+        .from(recipesTable)
+
+        await this.getConnetion()
+        .delete("*")
+        .where({
+            id: userId
+        })
+        .from(userTable)
     }
 }
 

@@ -10,8 +10,8 @@ import GenerateId from "../services/GenerateId";
 import { HashManager } from "../services/HashManager";
 import { AuthenticatorData } from "../types/AuthenticationData";
 import { USER_ROLES } from "../types/interfaceUsers";
-
-
+import moment from "moment";
+import { InsufficientAuthorization } from "../error/insufficientAuthorization";
 
 class UserController {
     public createUser = async (req: Request, res: Response): Promise<void> => {
@@ -76,7 +76,7 @@ class UserController {
             const { email, password } = req.body
 
             if (!email || !password) {
-                throw new MissingFields
+                throw new MissingFields()
             }
 
 
@@ -188,6 +188,42 @@ class UserController {
             res.status(error.statusCode || 500).send({ message: error.message || "Algum erro ocorreu no servidor" })
         }
     }
+
+    public deleteAccount =async (req: Request, res: Response) => {
+       try {
+        const token = req.headers.authorization as string 
+        const id = req.body.id 
+
+        if(!token){
+            throw new InvalidCredentiais()
+        }
+
+            const authenticator = new Authenticator()
+            const payload = authenticator.verifyToken(token)
+
+            const userData = new UserDataBase()
+            const userDB = await userData.getUserById(id)
+
+            if(!userDB){
+                throw new InvalidError("O Perfil não foi encontrado")
+            }
+
+            if(payload.role !== USER_ROLES.ADMIN) {
+                throw new InsufficientAuthorization()
+            }
+
+            await userData.removeAccount(id)
+
+            res.status(200).send({message: "Conta Deletada pela Adminstração com sucesso"})
+
+
+       } catch (error: any) {
+        res.status(error.statusCode || 500).send({ message: error.message || "Algum erro ocorreu no servidor" })
+       }
+
+    }
+
+
 
     
 }

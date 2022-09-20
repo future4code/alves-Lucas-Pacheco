@@ -1,0 +1,36 @@
+POST http://localhost:3003/user/signup
+Content-Type: application/json
+
+{
+    "name": "Lucas",
+    "email": "luiz42@gmail.com",
+    "password": "abc1254"
+}
+
+###
+POST http://localhost:3003/user/login
+Content-Type: application/json
+
+{
+    "email": "lucas@gmailSDASDASDASDASDSADASDASD.com",
+    "password": "abc1254"
+}
+
+###
+GET http://localhost:3003/user
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ2YmRhOGUwLTAxZmEtNDUyZS1hYjg2LTFmYjA4OTU2OWFlNiIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NjM2MDkwMzYsImV4cCI6MTY2MzY1MjIzNn0.TZpUcqk1JvZf90oGEJi8vgvmSavpU532ybfPEVqCDbw
+
+###
+DELETE http://localhost:3003/user/d6bda8e0-01fa-452e-ab86-1fb089569ae6
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImI3NzJmZGY0LWM5ZmItNDJjMi1hNGJmLTVhZThiODViNTE5YiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MzYxMDg0MCwiZXhwIjoxNjYzNjU0MDQwfQ.UnW6aalc52xq54ToXwT1uV-S1QIxAhaF84dfDda5xIs
+
+###
+PUT http://localhost:3003/user/16eaba0e-4332-4964-adc0-3d344dd3e1c5
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImI3NzJmZGY0LWM5ZmItNDJjMi1hNGJmLTVhZThiODViNTE5YiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MzY5Nzk1NiwiZXhwIjoxNjYzNzQxMTU2fQ.E6Nb10sL43D8Zij1BOJf58YzUDfU6d1AZacAo7T0DAI
+Content-Type: application/json
+
+{
+    "name": "Astrodev3",
+    "email": "Lucas@gmail.com",
+    "password": "Baninha123"
+}

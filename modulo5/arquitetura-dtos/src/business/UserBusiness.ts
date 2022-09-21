@@ -277,9 +277,9 @@ class UserBusiness {
             userDB.role
         )
 
-        name && Edituser.setName(name)
-        email && Edituser.setEmail(email)
-        password && Edituser.setPassword(password)
+         name && Edituser.setName(name)
+         email && Edituser.setEmail(email)
+         password && Edituser.setPassword(password)
 
         await userData.editUsers(Edituser)
 

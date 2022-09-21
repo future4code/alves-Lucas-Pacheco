@@ -7,7 +7,7 @@ import { CreateNewUser, User } from "../model/User";
 
 class UserController {
     
-    public signup = async (req: Request, res: Response) => {
+    public signup = async (req: Request, res: Response): Promise<void> => {
 
         try {
             const {name, email, password} = req.body
@@ -29,7 +29,8 @@ class UserController {
 
         } catch (error) {
             if(error instanceof Error) {
-                return res.status(400).send({message: error.message})
+             res.status(400).send({message: error.message})
+             return 
             }
 
             res.status(500).send({message: "Erro inesperado"})

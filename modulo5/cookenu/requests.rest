@@ -1,0 +1,49 @@
+###
+POST http://localhost:3003/signup 
+Content-Type: application/json
+
+{
+   "name": "Luiz",
+	"email": "luiz@24gmail.com",
+	"password": "123456",
+	"role": 
+}
+
+###
+POST http://localhost:3003/login 
+Content-Type: application/json
+
+{
+	"email": "luiz@gmail.com",
+	"password": "123456"
+}
+
+###
+POST http://localhost:3003/users/follow
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJjYmY0ZmQxLTgxNWUtNDcwNS1hYTgzLTE0NGI0NzQ1MDA0OSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MzE3NDMyMywiZXhwIjoxNjYzMjYwNzIzfQ.LV0v6dibBbP2eRm_RW5ts40eaZSj5HSoW47xYzaHlB4
+
+
+
+###
+GET http://localhost:3003/profile
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJjYmY0ZmQxLTgxNWUtNDcwNS1hYTgzLTE0NGI0NzQ1MDA0OSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MzEyOTYxNiwiZXhwIjoxNjYzMjE2MDE2fQ.PKx83u3qQwAprSfcV5OxdP9IFTLCrTJo1vWEYj9sGIg
+
+
+###
+GET http://localhost:3003/user/04b50c24-1d37-4e66-98bc-39ab65fad3ed
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJjYmY0ZmQxLTgxNWUtNDcwNS1hYTgzLTE0NGI0NzQ1MDA0OSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MzE1ODk4OSwiZXhwIjoxNjYzMjQ1Mzg5fQ.NaZL84p2UF1ebMbdAJi6ni8wD6UCs78anblSveuTphw
+
+###
+POST http://localhost:3003/recipes
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJjYmY0ZmQxLTgxNWUtNDcwNS1hYTgzLTE0NGI0NzQ1MDA0OSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MzE1ODk4OSwiZXhwIjoxNjYzMjQ1Mzg5fQ.NaZL84p2UF1ebMbdAJi6ni8wD6UCs78anblSveuTphw
+
+{
+	"title": "Abacate",
+	"description": "Doce-De-Abacate Com Banana podre"
+}
+
+###
+GET http://localhost:3003/recipes/271f5767-b0eb-4d41-9dfb-8741a31d4160
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJjYmY0ZmQxLTgxNWUtNDcwNS1hYTgzLTE0NGI0NzQ1MDA0OSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2MzE1ODk4OSwiZXhwIjoxNjYzMjQ1Mzg5fQ.NaZL84p2UF1ebMbdAJi6ni8wD6UCs78anblSveuTphw

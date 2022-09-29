@@ -12,10 +12,10 @@ export interface ITokenPayload {
 
 class Authenticator {
      
-    generateToken(id: ITokenPayload){
-       const token = jwt.sign({
-        id
-       },
+    generateToken = (payload: ITokenPayload) => {
+       const token = jwt.sign(
+        payload
+       ,
        process.env.JWT_KEY as string,
        
        {
@@ -26,10 +26,14 @@ class Authenticator {
        return token
     }
 
-    verifyToken(token: string) {
+    verifyToken = (token: string): ITokenPayload | null => {
+       try {
         const verify: ITokenPayload = jwt.verify(token, process.env.JWT_KEY as string) as ITokenPayload
 
         return verify
+       } catch (error) {
+        return null
+       }
     }
 }
 

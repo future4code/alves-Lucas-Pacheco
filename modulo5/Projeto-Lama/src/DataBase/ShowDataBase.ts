@@ -37,7 +37,7 @@ export default class ShowDataBase extends BaseDataBase {
      .insert(showDB)
    }
 
-   public getShows = async (): Promise<IShowDB[] | undefined> => {
+   public getShows = async (): Promise<IShowDB[]> => {
     const shows: IShowDB[] = await this.getConnetion()
     .select("*")
     .into(ShowDataBase.SHOWS_TABLE)
@@ -65,11 +65,11 @@ export default class ShowDataBase extends BaseDataBase {
     return showDB[0]
    }
 
-   public findReserveShow = async ( id: string, userId: string): Promise<ITicketDB | undefined>  => {
+   public findReserveShow = async ( ShowId: string, userId: string): Promise<ITicketDB | undefined>  => {
     const TicketDB: ITicketDB[] = await this.getConnetion()
     .into(ShowDataBase.TICKETS_TABLE)
     .select()
-    .where({show_id: id})
+    .where({show_id: ShowId})
     .andWhere({user_id: userId })
 
     return TicketDB[0]

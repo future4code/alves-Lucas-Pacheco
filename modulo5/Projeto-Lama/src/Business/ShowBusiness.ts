@@ -49,10 +49,16 @@ export default class ShowBusiness {
         
         const dateFormated = new Date(starts_at)
 
-        const dateEvent = new Date("05/12/2022")
+        const dateInitialEvent = new Date("05/12/2022")
 
-        if (dateFormated < dateEvent) {
+        const finalDateEvent = new Date("01/01/2023")
+
+        if (dateFormated < dateInitialEvent) {
          throw new InvalidError("Data do show não pode-se anterior ao dia do festival")
+        }
+
+        if(dateFormated > finalDateEvent) {
+         throw new InvalidError("Data do show não pode-se posterior ao fim do evento")
         }
 
         const id = this.generateId.generate()
@@ -62,7 +68,7 @@ export default class ShowBusiness {
         const showDB = await this.showData.findShowByDate(date)
 
         if(showDB) {
-         throw new InvalidError("Já tem um Show criado nes mesmo dia")
+         throw new InvalidError("Já tem um Show criado nesse mesmo dia")
         }
 
         const newShow = new Show(
@@ -101,10 +107,6 @@ export default class ShowBusiness {
         }
 
         const showsDB = await this.showData.getShows()
-
-        if (!showsDB) {
-            throw new NotFoundError()
-        }
         
         
         const shows = showsDB.map((showDB) => {
@@ -147,7 +149,7 @@ export default class ShowBusiness {
       const showDB = await this.showData.findById(id)
 
       if(!showDB) {
-        throw new InvalidError("Post não encontrado")
+        throw new InvalidError("Show não encontrado")
       }
 
       const reserveShow = await this.showData.findReserveShow(id, payload.id)
@@ -189,7 +191,7 @@ export default class ShowBusiness {
       const showDB = await this.showData.findById(id)
 
       if(!showDB) {
-        throw new InvalidError("Post não encontrado")
+        throw new InvalidError("Show não encontrado")
       }
 
       const reserveShow = await this.showData.findReserveShow(id, payload.id)

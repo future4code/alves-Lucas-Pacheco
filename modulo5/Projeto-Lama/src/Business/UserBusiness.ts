@@ -35,11 +35,15 @@ export default class UserBusiness {
         throw new InvalidError("Parâmetro 'email' inválido")
     }
 
+    if(typeof password !== "string") {
+        throw new InvalidError("Parâmetro 'password' inválido")
+    }
+
     if(!email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)) {
         throw new InvalidError("Email passado em formato inválido")
     }
 
-    if(!password || password.length < 6) {
+    if(password.length < 6) {
         throw new InvalidError("Parâmetro 'password' inválido")
     }
 
@@ -87,11 +91,15 @@ export default class UserBusiness {
         throw new InvalidError("Parâmetro 'email' inválido")
     }
 
+    if(typeof password !== "string") {
+        throw new InvalidError("Parâmetro 'password' inválido")
+    }
+
     if(!email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)) {
         throw new InvalidError("Email passado em formato inválido")
     }
 
-    if(!password || password.length < 6) {
+    if(password.length < 6) {
         throw new InvalidError("Parâmetro 'password' inválido")
     }
 

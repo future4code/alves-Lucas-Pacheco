@@ -15,3 +15,6 @@ const competitionController = new CompetitionController(
 )
 
 competitionRouter.post("/", competitionController.CreateCompetition)
+competitionRouter.post("/competitor", competitionController.registrationCompetetitor )
+competitionRouter.get("/", competitionController.getAllResults)
+competitionRouter.put("/:competitionName", competitionController.finalizationCompetition)

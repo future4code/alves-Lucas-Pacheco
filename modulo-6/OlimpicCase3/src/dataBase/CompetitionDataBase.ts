@@ -1,5 +1,5 @@
-import { runInThisContext } from "vm";
-import { ICompetitionNameCompDBDTO, ICompetitionNameInputDTO, ICompetitorDBModelDTO } from "../interface/Competition";
+
+import { ICompetitionNameCompDBDTO,  ICompetitionStatusInputDBDTO, ICompetitorDBDTO, ICompetitorDBModelDTO, IGetStatusOutputDBDTO, IResultsInputDTODB, IUpdateFinalizeCompetitionInputDTO } from "../interface/Competition";
 import { Competitor } from "../models/Competitor";
 import BaseDataBase from "./BaseDataBase";
 
@@ -21,14 +21,40 @@ class CompetitionDataBase extends BaseDataBase {
     }
 
     public getCompetitionByName = async (competition: string): Promise<ICompetitionNameCompDBDTO | undefined> => {
-        console.log("DB", competition)
         const response: ICompetitionNameCompDBDTO[] = await this.getConnetion()
         .select()
         .from(CompetitionDataBase.COMPETITION_TABLE_NAME)
         .where({competition})
-
-        console.log(response[0], "resposta")
         
+        return response[0]
+    }
+
+    public getCompetitorByCompetitionName = async (competition_name: string): Promise<ICompetitorDBModelDTO[] | undefined> => {
+        const response: ICompetitorDBModelDTO[] = await this.getConnetion()
+        .select("*")
+        .from(CompetitionDataBase.COMPETITOR_TABLE_ATLETA)
+        .where({competition_name})
+
+        return response
+    }
+
+    public getStatusByCompetitionNameComplete = async (competition_name: string): Promise<ICompetitionStatusInputDBDTO | undefined> => {
+        const response: ICompetitionStatusInputDBDTO[] = await this.getConnetion()
+        .select()
+        .from(CompetitionDataBase.OLIMPIC_STATUS_TABLE)
+        .where({competition_name})
+        .andWhere({status: "Complete"})
+
+        return response[0]
+    }
+
+    public getStatusByCompetitionNameIncomplete = async (competition_name: string): Promise<ICompetitionStatusInputDBDTO | undefined> => {
+        const response: ICompetitionStatusInputDBDTO[] = await this.getConnetion()
+        .select()
+        .from(CompetitionDataBase.OLIMPIC_STATUS_TABLE)
+        .where({competition_name})
+        .andWhere({status: "incomplete"})
+
         return response[0]
     }
 
@@ -36,6 +62,57 @@ class CompetitionDataBase extends BaseDataBase {
         await this.getConnetion()
         .into(CompetitionDataBase.COMPETITION_TABLE_NAME)
         .insert({competition: competition}) 
+    }
+
+    public insertCompetitor = async (competitor: Competitor): Promise<void> => {
+         const competitorDB = this.CompetitiorDBModel(competitor)
+         await this.getConnetion()
+         .into(CompetitionDataBase.COMPETITOR_TABLE_ATLETA)
+         .insert(competitorDB)     
+    }
+
+    public insertOlimpicStatus = async (competition: ICompetitionStatusInputDBDTO): Promise<void> => {
+        await this.getConnetion()
+        .into(CompetitionDataBase.OLIMPIC_STATUS_TABLE)
+        .insert(competition)
+    }
+
+    public finalizationCompetition = async (input: IUpdateFinalizeCompetitionInputDTO): Promise<void> => {
+        const {competition_name, status} = input
+        await this.getConnetion()
+        .into(CompetitionDataBase.OLIMPIC_STATUS_TABLE)
+        .where({competition_name})
+        .update({status: status})
+    }
+
+    public getStatus = async (competition_name: string): Promise<IGetStatusOutputDBDTO | undefined> => {
+        const response: IGetStatusOutputDBDTO =  await this.getConnetion()
+        .from(CompetitionDataBase.OLIMPIC_STATUS_TABLE)
+        .where({competition_name})
+        .select("status")
+
+        return response
+    }
+
+    public getResults = async (input: IResultsInputDTODB): Promise<ICompetitorDBDTO[] | undefined> => {
+        const search = input.search
+        const order = input.order
+        const sort = input.sort
+        const limit = input.limit
+        const offset = input.offset
+        const competition_name = input.competition_name
+
+        const results: ICompetitorDBDTO[] = await this.getConnetion()
+        .where("atleta", "LIKE", `%${search}%`)
+        .andWhere({competition_name})
+        .orderBy(order, sort)
+        .limit(limit)
+        .offset(offset)
+        .select("*")
+        .from(CompetitionDataBase.COMPETITOR_TABLE_ATLETA)
+
+        return results
+
     }
 
 

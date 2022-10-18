@@ -86,12 +86,12 @@ class CompetitionDataBase extends BaseDataBase {
     }
 
     public getStatus = async (competition_name: string): Promise<IGetStatusOutputDBDTO | undefined> => {
-        const response: IGetStatusOutputDBDTO =  await this.getConnetion()
+        const response: IGetStatusOutputDBDTO[] =  await this.getConnetion()
         .from(CompetitionDataBase.OLIMPIC_STATUS_TABLE)
         .where({competition_name})
-        .select("status")
+        .select("*")
 
-        return response
+        return response[0]
     }
 
     public getResults = async (input: IResultsInputDTODB): Promise<ICompetitorDBDTO[] | undefined> => {

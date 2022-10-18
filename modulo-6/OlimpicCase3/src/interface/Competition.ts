@@ -72,6 +72,7 @@ export interface IResultsInputDTODB {
 }
 
 export interface IGetStatusOutputDBDTO {
+    competition_name: string
     status: string
 }
 

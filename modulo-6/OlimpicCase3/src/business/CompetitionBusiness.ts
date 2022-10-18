@@ -196,12 +196,16 @@ export default class CompetitionBusiness {
      }
 
      const getStatusByCompetitionName = await this.competitionData.getStatus(competition_name)
+
+     
      
      if(!getStatusByCompetitionName) {
         throw new InvalidError("Competição não encontrada seu status")
      }
 
      let compStatus = "Encerrada"
+
+     console.log(getStatusByCompetitionName.status)
 
      if(getStatusByCompetitionName.status === "incomplete") {
         compStatus = "Competição em andamento"

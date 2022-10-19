@@ -1,5 +1,5 @@
 
-import { ICompetitionNameCompDBDTO,  ICompetitionStatusInputDBDTO, ICompetitorDBDTO, ICompetitorDBModelDTO, IGetStatusOutputDBDTO, IResultsInputDTODB, IUpdateFinalizeCompetitionInputDTO } from "../interface/Competition";
+import { IAtualizationCompetitorValue, ICompetitionNameCompDBDTO,  ICompetitionStatusInputDBDTO, ICompetitorDBDTO, ICompetitorDBModelDTO, IGetStatusOutputDBDTO, IResultsInputDTODB, IUpdateFinalizeCompetitionInputDTO } from "../interface/Competition";
 import { Competitor } from "../models/Competitor";
 import BaseDataBase from "./BaseDataBase";
 
@@ -114,6 +114,25 @@ class CompetitionDataBase extends BaseDataBase {
         return results
 
     }
+
+    public getCompetitorByAtleta = async (atleta: string): Promise<ICompetitorDBModelDTO | undefined> => {
+        const response: ICompetitorDBModelDTO[] = await this.getConnetion()
+        .select("*")
+        .from(CompetitionDataBase.COMPETITOR_TABLE_ATLETA)
+        .where({atleta})
+
+        return response[0]
+    }
+
+   public atualizationValue = async (input: IAtualizationCompetitorValue ): Promise<void> => {
+      const {atleta, value} = input
+      await this.getConnetion()
+      .into(CompetitionDataBase.COMPETITOR_TABLE_ATLETA)
+      .where({atleta})
+      .update({
+        value: value
+      })
+   }
 
 
 }

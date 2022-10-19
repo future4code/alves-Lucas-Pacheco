@@ -88,3 +88,12 @@ export interface IResultsOutputDTO {
     competitionStatus: string,
     competitors: ICompetitorDBDTO[]
 }
+
+export interface IAtualizationCompetitorValue {
+    atleta: string,
+    value: number
+}
+
+export interface IAtualizationCompetitorOutputDTO {
+    message: string
+}

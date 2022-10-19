@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import CompetitionBusiness from "../business/CompetitionBusiness";
 import { BaseError } from "../Error/BaseError";
-import { ICompetitionNameInputDTO,  IFinalizationCompetitionInputDTO,  IGetResultInputDTO,  IRegistrationCompetitorInputDTO } from "../interface/Competition"
+import { IAtualizationCompetitorValue, ICompetitionNameInputDTO,  IFinalizationCompetitionInputDTO,  IGetResultInputDTO,  IRegistrationCompetitorInputDTO } from "../interface/Competition"
 
 export class CompetitionController {
     constructor(
@@ -94,6 +94,28 @@ export class CompetitionController {
             const response = await this.competitionBusiness.getAllResults(input)
 
             res.status(200).send(response)
+        } catch (error) {
+            if(error instanceof BaseError) {
+                return res.status(error.statusCode).send({message: error.message})
+            } // Verificação para não ser necessário tipar o Erro como Any
+    
+            res.status(500).send("Erro inesperado") //  
+        }
+    }
+
+    public atualizationResults = async (req: Request, res: Response) => {
+        try {
+            const {atleta, value} = req.body
+
+
+            const input: IAtualizationCompetitorValue = {
+                atleta,
+                value
+            }
+
+            const response = await this.competitionBusiness.atualizationResults(input)
+
+            res.status(201).send(response)
         } catch (error) {
             if(error instanceof BaseError) {
                 return res.status(error.statusCode).send({message: error.message})

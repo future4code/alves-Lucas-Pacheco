@@ -1,7 +1,7 @@
 import CompetitionDataBase from "../dataBase/CompetitionDataBase";
 import { InvalidError } from "../Error/InvalidError";
 import { MissingFields } from "../Error/MissingFields";
-import { ICompetitionNameInputDTO, ICompetitionNameOutputDTO, ICompetitionStatusInputDBDTO, IFinalizationCompetitionInputDTO, IFinalizationCompetitionOutputDTO, IGetResultInputDTO, IRegistrationCompetitorInputDTO, IRegistrationCompetitorOutputDTO, IResultsInputDTODB, IResultsOutputDTO, IUpdateFinalizeCompetitionInputDTO } from "../interface/Competition";
+import { IAtualizationCompetitorOutputDTO, IAtualizationCompetitorValue, ICompetitionNameInputDTO, ICompetitionNameOutputDTO, ICompetitionStatusInputDBDTO, IFinalizationCompetitionInputDTO, IFinalizationCompetitionOutputDTO, IGetResultInputDTO, IRegistrationCompetitorInputDTO, IRegistrationCompetitorOutputDTO, IResultsInputDTODB, IResultsOutputDTO, IUpdateFinalizeCompetitionInputDTO } from "../interface/Competition";
 import { Competitor } from "../models/Competitor";
 import GenerateId from "../services/GenerateId";
 
@@ -249,4 +249,41 @@ export default class CompetitionBusiness {
 
      return response
     }
+
+    public atualizationResults = async (input: IAtualizationCompetitorValue) => {
+      const {atleta, value} = input
+
+      if(!atleta || !value) {
+         throw new MissingFields()
+      }
+      
+      
+     if(typeof atleta !== "string") {
+      throw new InvalidError("Parametro atleta, inválido")
+   }
+
+      if(typeof value !== "number") {
+      throw new InvalidError("Parametro value, inválido")
+   }
+
+   const competitorDB = await this.competitionData.getCompetitorByAtleta(atleta)
+
+   if(!competitorDB) {
+      throw new InvalidError("Competidor não encontrado")
+   }
+
+   if(competitorDB.value > value) {
+      throw new InvalidError("Lançamento anterior maior que o atual")
+   }
+
+   await this.competitionData.atualizationValue(input)
+
+   const response: IAtualizationCompetitorOutputDTO = {
+      message: "Colocação atualizada"
+   }
+
+   return response
+
+}
+
 }
